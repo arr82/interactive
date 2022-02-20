@@ -1,0 +1,139 @@
+
+body {
+  background-color: pink;
+  flex-direction: row;
+}
+
+.interview {
+  width:48%;
+  height:100vh;
+  float:left;
+margin-left:3%;
+margin-top:3%;
+margin-bottom:5%;
+margin-right:3%
+}
+
+.container {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left:50%;
+  height:100vh;
+  background: pink;
+  position:fixed;
+  top:0;
+  width: 50%;
+}
+
+.book1 {
+  float: left;
+  transform: rotate(5deg);
+  margin-left: 7px;
+  margin-top: 7px;
+  width:40px;
+  height:90vh;
+  background-color:red;
+  border-radius: 6px;
+  bottom:0%;
+}
+
+.book2 {
+  float: left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:cornflowerblue;
+  bottom:0%;
+}
+
+.book3 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:yellow;
+  bottom:0%;
+}
+.book4 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:green;
+  bottom:0%;
+}
+.book5 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:brown;
+  bottom:0%;
+}
+.book6 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:orchid;
+  bottom:0%;
+}
+.book7 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:orangered;
+  bottom:0%;
+}
+.book8 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:palevioletred;
+  bottom:0%;
+}
+.book9 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:orange;
+  bottom:0%;
+}
+.book10 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:hotpink;
+  bottom:0%;
+}
+.book11 {
+  float:left;
+  margin-left: 7px;
+  width:40px;
+  height:90vh;
+  border-radius: 6px;
+  background-color:olive;
+  bottom:0%;
+}
+
+h1
+{
+  font-size:30px;
+  font-family: times;
+  padding-right: 4.5%;
+  padding-bottom: 5%;
+
+}
