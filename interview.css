@@ -166,6 +166,11 @@ h1
   padding-bottom: 5%;
 }
 
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
 h2
 {
   font-family:'mos_pma_sans_stencil_regulaRg';
