@@ -30,8 +30,7 @@ overflow-x: scroll;
 
 .book1 {
   float: right;
-  transform: rotate(-2deg);
-  margin-left: 7px;
+  margin-left: 0px;
   width:40px;
   height:90vh;
   background-color:red;
@@ -43,8 +42,8 @@ overflow-x: scroll;
 .book2 {
   float: right;
   margin-bottom: 10px;
-  margin-left: 7px;
-  width:40px;
+  margin-left: 0px;
+  width:35px;
   height:90vh;
   border-radius: 6px;
   background-color:cornflowerblue;
@@ -54,69 +53,68 @@ overflow-x: scroll;
 
 .book3 {
   float:right;
-  margin-left: 7px;
+  margin-left: 0px;
   width:40px;
-  height:90vh;
+  height:87vh;
   border-radius: 6px;
-  background-color:yellow;
-  margin-top: 40px;
+  background-color:gold;
+  margin-top: 64px;
   margin-bottom: 15px;
 }
 .book4 {
   float:right;
-  margin-left: 7px;
-  width:50px;
-  height:90vh;
+  margin-left: 0px;
+  width:60px;
+  height:65vh;
   border-radius: 6px;
   background-color:green;
-  margin-top: 40px;
+  margin-top: 220px;
   margin-bottom: 15px;
 }
 .book5 {
   float:right;
-  margin-left: 7px;
+  margin-left: 0px;
   width:40px;
-  height:90vh;
+  height:88vh;
   border-radius: 6px;
   background-color:brown;
-  margin-top: 40px;
+  margin-top: 55px;
   margin-bottom: 15px;
 }
 .book6 {
   float:right;
-  margin-left: 7px;
+  margin-left: 0px;
   width:30px;
-  height:90vh;
+  height:85vh;
   border-radius: 6px;
   background-color:orchid;
-  margin-top: 40px;
+  margin-top: 75px;
   margin-bottom: 15px;
 }
 .book7 {
   float:right;
-  transform: rotate(1dg);
-  margin-left: 7px;
+  margin-left: 0px;
   width:40px;
-  height:90vh;
+  height:85vh;
   border-radius: 6px;
   background-color:orangered;
-  margin-top: 40px;
+  margin-top: 75px;
   margin-bottom: 15px;
 }
 .book8 {
   float:right;
-  margin-left: 4px;
+  margin-left:0px;
   width:55px;
-  height:90vh;
+  height:75vh;
   border-radius:6px;
   background-color:palevioletred;
-  margin-top: 40px;
+  margin-top: 148px;
   margin-bottom: 15px;
 }
 .book9 {
+  transform:rotate(4deg);
   float:right;
-  transform:rotate(-0.5deg);
-  margin-left: 3px;
+  margin-left: 0px;
   width:36px;
   height:90vh;
   border-radius: 6px;
@@ -125,9 +123,9 @@ overflow-x: scroll;
   margin-bottom: 15px;
 }
 .book10 {
-  transform:rotate(0.5deg);
+  transform:rotate(4deg);
   float:right;
-  margin-left: 2px;
+  margin-left: 0px;
   width:30px;
   height:86vh;
   border-radius: 6px;
@@ -136,8 +134,9 @@ overflow-x: scroll;
   margin-bottom: 15px;
 }
 .book11 {
+  transform:rotate(4deg);
   float: right;
-  margin-left: 7px;
+  margin-left: -3px;
   width:55px;
   height:80vh;
   border-radius: 6px;
@@ -147,9 +146,9 @@ overflow-x: scroll;
 }
 
 .book12 {
-  transform:rotate(3deg);
+  transform:rotate(4deg);
   float:right;
-  margin-left: 7px;
+  margin-left: 0px;
   width:45px;
   height:90vh;
   border-radius: 6px;
