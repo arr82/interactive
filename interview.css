@@ -1,11 +1,7 @@
 
-@font-face {
-  font-family:'stencilreg';
-  src:url(fonts/MoS_PMA_Sans-Stencil-Regular-Beta.otf);
-}
 
 body {
-  background-color: cornsilk;
+  background-color: #FFFDF8;
   flex-direction: row;
 }
 
@@ -22,136 +18,179 @@ margin-right:3%
 .container {
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content:flex-end;
+overflow-x: scroll;
   margin-left:50%;
   height:100vh;
   position:fixed;
-  top:0;
+  bottom: 0;
   width: 50%;
 }
 
 .book1 {
-  float: left;
-  transform: rotate(4deg);
+  float: right;
+  transform: rotate(-2deg);
   margin-left: 7px;
   width:40px;
   height:90vh;
   background-color:red;
   border-radius: 6px;
-  bottom:0%;
-  font-family: 'stencilreg';
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 
 .book2 {
-  float: left;
+  float: right;
   margin-bottom: 10px;
   margin-left: 7px;
   width:40px;
   height:90vh;
   border-radius: 6px;
   background-color:cornflowerblue;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 
 .book3 {
-  float:left;
+  float:right;
   margin-left: 7px;
   width:40px;
   height:90vh;
   border-radius: 6px;
   background-color:yellow;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book4 {
-  float:left;
+  float:right;
   margin-left: 7px;
   width:50px;
   height:90vh;
   border-radius: 6px;
   background-color:green;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book5 {
-  float:left;
+  float:right;
   margin-left: 7px;
   width:40px;
   height:90vh;
   border-radius: 6px;
   background-color:brown;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book6 {
-  float:left;
+  float:right;
   margin-left: 7px;
   width:30px;
   height:90vh;
   border-radius: 6px;
   background-color:orchid;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book7 {
-  float:left;
+  float:right;
+  transform: rotate(1dg);
   margin-left: 7px;
   width:40px;
   height:90vh;
   border-radius: 6px;
   background-color:orangered;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book8 {
-  float:left;
-  margin-left: 7px;
-  width:40px;
+  float:right;
+  margin-left: 4px;
+  width:55px;
   height:90vh;
-  border-radius: 6px;
+  border-radius:6px;
   background-color:palevioletred;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book9 {
-  float:left;
-  margin-left: 7px;
-  width:30px;
+  float:right;
+  transform:rotate(-0.5deg);
+  margin-left: 3px;
+  width:36px;
   height:90vh;
   border-radius: 6px;
   background-color:orange;
-  bottom:0%;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 .book10 {
-  float:left;
-  margin-left: 7px;
-  width:40px;
-  height:90vh;
+  transform:rotate(0.5deg);
+  float:right;
+  margin-left: 2px;
+  width:30px;
+  height:86vh;
   border-radius: 6px;
   background-color:hotpink;
-  bottom:0%;
+  margin-top: 70px;
+  margin-bottom: 15px;
 }
 .book11 {
-  float:left;
+  float: right;
+  margin-left: 7px;
+  width:55px;
+  height:80vh;
+  border-radius: 6px;
+  background-color:olive;
+  margin-top: 114px;
+  margin-bottom: 15px;
+}
+
+.book12 {
+  transform:rotate(3deg);
+  float:right;
   margin-left: 7px;
   width:45px;
   height:90vh;
   border-radius: 6px;
-  background-color:olive;
-  bottom:0%;
+  background-color:red;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }
 
 h1
 {
-  font-size:30px;
-  font-family: times;
+  margin-top:30px;
+  font-size:40px;
+  font-family:'mos_pma_sans_stencil_regulaRg';
   padding-right: 4.5%;
   padding-bottom: 5%;
-
-
 }
 
 h2
 {
+  font-family:'mos_pma_sans_stencil_regulaRg';
+  font-family: sans-serif;
   transform: rotate(-90deg);
-  transform-origin: right, top;
+  /* transform-origin: right, top; */
   top:50%;
+  height: 100%;
   color: black;
   display: flex;
   justify-content: center;
+  padding: 15px 0 0;
 align-items: center;
 flex-direction: column;
+}
+
+a { color:orangered; }
+
+h3
+{
+  margin-top:30px;
+  font-size:33px;
+  font-family:'mos_pma_sans_stencil_regulaRg';
+  padding-right: 4.5%;
+  padding-bottom: 5%;
+  color:orangered;
 }
