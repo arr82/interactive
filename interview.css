@@ -28,6 +28,10 @@ overflow-x: scroll;
   width: 50%;
 }
 
+a:hover {
+  background-color: yellow;
+}
+
 .book1 {
   float: right;
   margin-left: 0px;
