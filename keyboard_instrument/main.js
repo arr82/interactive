@@ -16,73 +16,73 @@ $(window).keydown(function(e){
     $(".C").toggle("");
   }
   else if (key == "d") {
-    $(".message").toggle("");
+    $(".D").toggle("");
   }
   else if (key == "e") {
-    $(".message").toggle("");
+    $(".E").toggle("");
   }
   else if (key == "f") {
-    $(".message").toggle("");
+    $(".F").toggle("");
   }
   else if (key == "g") {
-    $(".message").toggle("");
+    $(".G").toggle("");
   }
   else if (key == "h") {
-    $(".message").toggle("");
+    $(".H").toggle("");
   }
   else if (key == "i") {
-    $(".message").toggle("");
+    $(".I").toggle("");
   }
   else if (key == "j") {
-    $(".message").toggle("");
+    $(".J").toggle("");
   }
   else if (key == "k") {
-    $(".message").toggle("");
+    $(".K").toggle("");
   }
   else if (key == "l") {
-    $(".heart").toggle("");
+    $(".L").toggle("");
   }
   else if (key == "m") {
-    $(".message").toggle("");
+    $(".M").toggle("");
   }
   else if (key == "n") {
-    $(".message").toggle("");
+    $(".N").toggle("");
   }
   else if (key == "o") {
-    $(".message").toggle("");
+    $(".O").toggle("");
   }
   else if (key == "p") {
-    $(".message").toggle("");
+    $(".P").toggle("");
   }
   else if (key == "q") {
-    $(".message").toggle("");
+    $(".Q").toggle("");
   }
   else if (key == "r") {
-    $(".message").toggle("");
+    $(".R").toggle("");
   }
   else if (key == "s") {
-    $(".message").toggle("");
+    $(".S").toggle("");
   }
   else if (key == "t") {
-    $(".message").toggle("");
+    $(".T").toggle("");
   }
   else if (key == "u") {
-    $(".message").toggle("");
+    $(".U").toggle("");
   }
   else if (key == "v") {
-    $(".message").toggle("");
+    $(".V").toggle("");
   }
   else if (key == "w") {
-    $(".message").toggle("");
+    $(".W").toggle("");
   }
   else if (key == "x") {
-    $(".message").toggle("");
+    $(".X").toggle("");
   }
   else if (key == "y") {
-    $(".message").toggle("");
+    $(".Y").toggle("");
   }
   else if (key == "z") {
-    $(".message").toggle("");
+    $(".Z").toggle("");
   }
 
 
