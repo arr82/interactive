@@ -7,7 +7,7 @@ $(window).keydown(function(e){
   console.log(key);
 
   if (key == "a") {
-    $(".A").toggle();
+    $(".A").toggle("");
   }
   else if (key == "b") {
     $(".B").toggle("");
