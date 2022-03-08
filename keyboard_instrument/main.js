@@ -16,73 +16,73 @@ $(window).keydown(function(e){
     $(".C").toggle("");
   }
   else if (key == "d") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "e") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "f") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "g") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "h") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "i") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "j") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "k") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "l") {
     $(".heart").toggle("");
   }
   else if (key == "m") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "n") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "o") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "p") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "q") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "r") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "s") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "t") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "u") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "v") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "w") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "x") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "y") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
   else if (key == "z") {
-    $(".message").html("Cadillac");
+    $(".message").toggle("");
   }
 
 
