@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: "myfont";
-    src: url("OradanoGSRR.ttf") format("truetype");
+    src: url("BradfordLL-Book.otf") format("truetype");
 }
 p.customfont {
     font-family: "myfont", serif;
@@ -9,9 +9,9 @@ p.customfont {
 
 #section2 {
   margin-left: 5%;
-   height:20%;
-   margin-top:7%;
-   margin-bottom: 7%;
+  height:20%;
+  margin-top:7%;
+  margin-bottom: 7%;
 }
 
 a {
