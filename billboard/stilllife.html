@@ -3,14 +3,42 @@
 <head>
 </head>
 <style>
-body {
-  color:blue;
+body.{}
+  .takePhoto{
+    position:absolute;
+    background-color:red;
+    height:100%;
+    width:100%;
 }
+
+.sheets{
+    position:absolute;
+  font-size: 40pt;
+
+}
+
 </style>
 
 <body>
+  <div  class="takePhoto">
 
-  <input type="file" accept="image/*" capture="camera">
+      <form id="take" action="" method="POST">
+          <input type="file" id= "cap" name="personalPhoto" accept="image/*" capture ="camera" id="camera"><p>
+      </form>
+  </div>
+
+  <div class="sheets">
+<br>
+<br>
+<br>
+STILL LIFE
+<br>
+<br>
+<br>
+SHEETS HERE
+<br>
+  </div>
+
 
 </body>
 </html>
