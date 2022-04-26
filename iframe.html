@@ -81,6 +81,8 @@ position: absolute;
 top: -100vh;
 left: -10vw;
 z-index: -20;
+opacity: 50%;
+transform: scale(2);
 }
 
 video{
@@ -115,16 +117,22 @@ header {
 
 #side {
 font-size:20vw;
+position: fixed;
+bottom:0;
 }
 
 #up{
   transform: rotate(90deg);
   font-size: 20vw;
+  position: fixed;
+  bottom:0;
 }
 
 #down{
   transform: rotate(-90deg);
   font-size: 20vw;
+  position: fixed;
+  bottom:0;
 }
 
 </style>
@@ -173,7 +181,7 @@ font-size:20vw;
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
   audio: false,
-  video: true
+  video: { facingMode: (front?"user": "enviroment")}
 };
 
 function handleSuccess(stream) {
