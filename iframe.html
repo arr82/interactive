@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="description" content="WebRTC code samples">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <meta itemprop="description" content="Client-side WebRTC code samples">
+  <meta itemprop="image" content="../../../images/webrtc-icon-192x192.png">
+  <meta itemprop="name" content="WebRTC code samples">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#ffffff">
 
+  <base target="_blank">
+
+  <title>getUserMedia</title>
+
+  <link rel="icon" sizes="192x192" href="../../../images/webrtc-icon-192x192.png">
+  <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../../../css/main.css">
 
 </head>
 <style>
@@ -13,25 +28,32 @@ top: -100vh;
 left: -10vw;
 z-index: -50;
 }
+
+video{
+  position: fixed;
+  margin-left: 50%;
+  margin-right: 50%;
+  top: 3%;
+  float: center;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
 </style>
 
 <body>
-  <p>
-    hello
-    <p>
+  <header>
+  <p>hello</p>
 
-      <video id="gum-local" autoplay playsinline></video>
+    <video id="gum-local" autoplay playsinline></video>
     <button id="showVideo">Open camera</button>
-
-      <div  class="takePhoto">
-
-          <form id="take" action="" method="POST">
-              <input type="file" id= "cap" name="personalPhoto" accept="image/*" capture ="camera" id="camera"><p>
-          </form>
-      </div>
+</header>
 
 <iframe src="https://docs.google.com/spreadsheets/d/1eaoLuEpxJkun0HWRt4LKk1tiSGALgva7fAYACbyjIcU/edit?usp=sharing" title="W3Schools Free Online Web Tutorials"></iframe>
-(<script type="text/javascript">
+<script type="text/javascript">
 
 /*
  *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
@@ -89,6 +111,6 @@ async function init(e) {
 
 document.querySelector('#showVideo').addEventListener('click', e => init(e));
 
-</script>)
+</script>
 </body>
 </html>
