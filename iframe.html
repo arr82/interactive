@@ -178,10 +178,14 @@ bottom:0;
  */
 'use strict';
 
+
+var front = true;
+var constraints = { video: { facingMode: (front? "user" : "environment") } };
+
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
   audio: false,
-  video: { facingMode: (front?"user": "enviroment")}
+  video: { facingMode: (front? "user" : "environment") }
 };
 
 function handleSuccess(stream) {
@@ -226,35 +230,20 @@ async function init(e) {
 document.querySelector('#showVideo').addEventListener('click', e => init(e));
 
 // makes color change with button
-
+var status=true;
 function myFunction()
 {
-document.body.style.backgroundColor= "black";
+  if (status){
+    document.body.style.backgroundColor= "black";
+    status=false;
+  }
+
+  else{
+    document.body.style.backgroundColor= "white";
+    status=true;
+  }
 }
 
-//supposed to do text to speech
-
-var msg = new SpeechSynthesisUtterance();
-msg.text = "Hello World";
-window.speechSynthesis.speak(msg);
-
-if ('speechSynthesis' in window) {
- // Speech Synthesis supported 🎉
-}else{
-  // Speech Synthesis Not Supported 😣
-  alert("Sorry, your browser doesn't support text to speech!");
-}
-
-var msg = new SpeechSynthesisUtterance();
-msg.text = "Good Morning";
-window.speechSynthesis.speak(msg);
-
-var msg = new SpeechSynthesisUtterance();
-var voices = window.speechSynthesis.getVoices();
-msg.voice = voices[10];
-msg.volume = 2; // From 0 to 1
-msg.rate = 1; // From 0.1 to 10
-msg.pitch = 2; // From 0 to 2
 
 // Get the modal
 var modal = document.getElementById("myModal");
