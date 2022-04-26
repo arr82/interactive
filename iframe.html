@@ -20,6 +20,60 @@
 
 </head>
 <style>
+
+#modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: blue;/* Fallback color */
+  background-color: blue; /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+modal-content {
+  background-color: blue;
+  outline-width: thin;
+  outline-color: black;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 10px solid #00000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+close:hover,
+close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button{
+outline: none;
+color: red;
+text-decoration: none;
+border: none;
+box-shadow: none;
+background-color: transparent;
+}
+
+
 iframe {
 width: 600vw;s
 height: 600vh;
@@ -31,8 +85,12 @@ z-index: -20;
 
 video{
   position: fixed;
-  margin-left: 50%;
-  margin-right: 50%;
+  padding-right: 50%vw;
+  padding-left: 20%;
+  padding-top: 100pt;
+  padding-bottom: 30%;
+  height: 60%vh;
+  width:inherit;
   top: 3%;
   float: center;
   z-index: -70;
@@ -49,35 +107,55 @@ path {
     stroke-dasharray: 11, 5;
 }
 
+header {
+  position: fixed;
+  height: fixed;
+  width: fixed;
+}
+
+#side {
+font-size:20vw;
+}
+
+#up{
+  transform: rotate(90deg);
+  font-size: 20vw;
+}
+
+#down{
+  transform: rotate(-90deg);
+  font-size: 20vw;
+}
+
 </style>
 
 <body>
 
-
-  <input type="button" id="myButton" value="NO"
-       onclick="Buttontoggle();">
-
+<header>
 <button type="button" onclick="myFunction()">Night Walk</button>
+<button id="showVideo">Open camera</button>
+<button id="myBtn">Info</button>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+<!-- Modal content -->
+<div class="modal-content">
+<span class="close">&times;</span>
+<p>This site is a virtual world building tool using words to create a landscape for strangers and friends to walk around in</p>
+</div>
+</div>
+  </header>
 
-  <p>hello</p>
+<video id="gum-local" autoplay playsinline></video>
+<br>
+<br>
+<br>
+<p>this is where the google sheets should be</p>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
-  <defs>
+<span id="side">&#10229;</span>
+<span id="side">&#10230;</span>
+<span id="up">&#10229;</span>
+<span id="down">&#10230;</span>
 
-    <marker id="pointer" markerWidth="10" markerHeight="8"
-	refX="9.5" refY="5.1" orient="-45" markerUnits="userSpaceOnUse">
-        <polyline points="1 1, 9 5, 1 7" />
-    </marker>
-  </defs>
-  <path d="M16.7,178 c87.6-46.9,162.9-185.4,227-136.4C307.2,90.1,195,158.5,111,108.9C71,85.2,92.2,30.7,126,7"
-    marker-end="url(#pointer)"/>
-</svg>
-
-
-
-    <video id="gum-local" autoplay playsinline></video>
-    <button id="showVideo">Open camera</button>
-    <button id="hideVideo">Close camera</button>
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTa2fK2mUJcTrQSIuBPJxIW73YeQGRDJ6lPUwHwxIS5IVjUVqQTbcYlZZnKbgWvTuvrlpwar4uGv_uX/pubhtml?gid=0&single=true" title="landscape"></iframe>
 
@@ -139,11 +217,14 @@ async function init(e) {
 
 document.querySelector('#showVideo').addEventListener('click', e => init(e));
 
+// makes color change with button
+
 function myFunction()
 {
 document.body.style.backgroundColor= "black";
 }
 
+//supposed to do text to speech
 
 var msg = new SpeechSynthesisUtterance();
 msg.text = "Hello World";
@@ -166,6 +247,35 @@ msg.voice = voices[10];
 msg.volume = 2; // From 0 to 1
 msg.rate = 1; // From 0.1 to 10
 msg.pitch = 2; // From 0 to 2
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
 
 </script>
 </body>
