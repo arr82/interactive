@@ -107,6 +107,7 @@ video{
   float: center;
   z-index: -70;
 
+
 }
 
 path, polyline {
@@ -201,9 +202,8 @@ position: fixed;
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
   audio: false,
-  video: {
-        facingMode:'enviroment'
-    }
+  video: true,
+  facingMode: 'environment',
 };
 
 function handleSuccess(stream) {
@@ -246,6 +246,8 @@ async function init(e) {
 }
 
 document.querySelector('#showVideo').addEventListener('click', e => init(e));
+
+
 
 // makes color change with button
 var status=true;
