@@ -179,14 +179,14 @@ position: fixed;
 
 <video id="gum-local" autoplay playsinline></video>
 
-<span id="side">&#10229;</span>
-<span id="side">&#10230;</span>
+<span id="left">&#10229;</span>
+<span id="right">&#10230;</span>
 <span id="up">&#10229;</span>
 <span id="down">&#10230;</span>
 
 
 <iframe src="https://docs.google.com/spreadsheets/d/1eaoLuEpxJkun0HWRt4LKk1tiSGALgva7fAYACbyjIcU/edit?usp=sharing" title="landscape"></iframe>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
 /*
@@ -287,6 +287,23 @@ window.onclick = function(event) {
   }
 }
 
+
+$("#down").click(function() {
+  var iframe_position = $("iframe").offset();
+  console.log(iframe_position);
+  var current_y_position = iframe_position.top;
+  // console.log(current_position);
+  var new_position = current_y_position + 100;
+  $("iframe").css('top', new_position);
+
+  // if (current_position > xyz) {
+  //   return;
+  // }
+  //
+  // else {
+  //
+  // }
+})
 
 
 
