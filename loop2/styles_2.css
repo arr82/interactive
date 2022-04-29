@@ -22,12 +22,14 @@ border: none;
 display: block;
 padding-bottom: 100px;
 box-sizing: border-box;
+line-height: 100px;
 
 }
 
 .start {
   font-family: "Garamond";
   padding-bottom: 30px;
+
 }
 
 .container {
@@ -56,7 +58,7 @@ padding-right: 40vw;
   }
 
   :nth-child(even) {
-  padding-left: 35vw;
+  padding-left: 30vw;
   }
 
 images {
