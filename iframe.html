@@ -203,7 +203,9 @@ position: fixed;
 const constraints = window.constraints = {
   audio: false,
   video:{
-        facingMode: 'environment',}
+    facingMode: {
+            exact: 'enviroment'}
+        }
 };
 
 function handleSuccess(stream) {
