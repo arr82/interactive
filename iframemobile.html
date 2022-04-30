@@ -25,6 +25,10 @@
 
 <style>
 
+body, html {
+  height: 100%;
+}
+
 @font-face {
     font-family: "AA";
     src: url("AntiqueAncienne-Italic.otf") format("truetype");
@@ -140,6 +144,16 @@ position: fixed;
   right: 20px;
 }
 
+#arrows {
+  color: #3A89E8;
+  font-size:50px;
+  bottom:30px;
+  position: fixed;
+  left: 40vw;
+  right: 40vw;
+
+}
+
 </style>
 
 <body>
@@ -156,14 +170,18 @@ position: fixed;
 <p>this site is a landscape of words to take a walk in. Click anywhere on the screen to type or use the camera to map what you see to this shared grid. thank you for building a world with me :0) </p>
 </div>
 </div>
+
+
+
+<div id="arrows">
+<span id="left">&#8592;</span>
+<span id="up">&#8593;</span>
+<span id="down">&#8595;</span>
+<span id="right">&#8594;</span>
+
   </header>
 
 <video id="gum-local" autoplay playsinline></video>
-
-<span id="left">&#10229;</span>
-<span id="right">&#10230;</span>
-<span id="up">&#10229;</span>
-<span id="down">&#10230;</span>
 
 
 <iframe src="https://docs.google.com/spreadsheets/d/1eaoLuEpxJkun0HWRt4LKk1tiSGALgva7fAYACbyjIcU/edit?usp=sharing" title="landscape"></iframe>

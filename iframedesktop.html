@@ -33,6 +33,20 @@ p{
   padding-right: 20px;
   font-family: "AA";
   color: #3A89E8;
+}
+
+span{
+  color: #3A89E8;
+  font-size: 50px;
+}
+
+#arrows {
+  color: #3A89E8;
+  font-size:50px;
+  bottom:30px;
+  position: fixed;
+  left: 40vw;
+  right: 40vw;
 
 }
 
@@ -113,8 +127,6 @@ video{
   top: 3%;
   float: center;
   z-index: -70;
-
-
 }
 
 
@@ -127,21 +139,6 @@ font-size:20vw;
 position: fixed;
 bottom:0;
 }
-
-#up{
-  transform: rotate(90deg);
-  font-size: 20vw;
-  position: fixed;
-  bottom:0;
-}
-
-#down{
-  transform: rotate(-180deg);
-  font-size: 20vw;
-  position: fixed;
-  bottom:0;
-}
-
 
 
 #showVideo {
@@ -158,6 +155,8 @@ position: fixed;
   right: 70px;
 }
 
+
+
 </style>
 
 <body>
@@ -173,14 +172,18 @@ position: fixed;
 <p>this site is a landscape of words to take a walk in. Click anywhere on the screen to type or use the camera to map what you see to this shared grid.thank you for building a world with me :0) </p>
 </div>
 </div>
+
+<div id="arrows">
+<span id="left">&#8592;</span>
+<span id="up">&#8593;</span>
+<span id="down">&#8595;</span>
+<span id="right">&#8594;</span>
+
+</div>
+
   </header>
 
 <video id="gum-local" autoplay playsinline></video>
-
-<span id="left">&#10229;</span>
-<span id="right">&#10230;</span>
-<span id="up">&#10229;</span>
-<span id="down">&#10230;</span>
 
 
 <iframe src="https://docs.google.com/spreadsheets/d/1eaoLuEpxJkun0HWRt4LKk1tiSGALgva7fAYACbyjIcU/edit?usp=sharing" title="landscape"></iframe>
@@ -291,16 +294,17 @@ $("#down").click(function() {
   console.log(iframe_position);
   var current_y_position = iframe_position.top;
   // console.log(current_position);
-  var new_position = current_y_position + 100;
+  var new_position = current_y_position + 60;
   $("iframe").css('top', new_position);
+})
 
-  // if (current_position > xyz) {
-  //   return;
-  // }
-  //
-  // else {
-  //
-  // }
+$("#up").click(function() {
+  var iframe_position = $("iframe").offset();
+  console.log(iframe_position);
+  var current_y_position = iframe_position.top;
+  // console.log(current_position);
+  var new_position = current_y_position - 60;
+  $("iframe").css('top', new_position);
 })
 
 
