@@ -22,10 +22,17 @@
 <style>
 
 
+@font-face {
+    font-family: "AA";
+    src: url("AntiqueAncienne-Italic.otf") format("truetype");
+}
+
 p{
-  font-size: 6vh;
+  font-size: 9vh;
   padding-left: 30px;
   padding-right: 20px;
+  font-family: "AA";
+  color: #3A89E8;
 
 }
 
@@ -110,15 +117,6 @@ video{
 
 }
 
-path, polyline {
-    fill: none;
-    stroke: #231F20;
-    vector-effect: non-scaling-stroke;
-    stroke-width: 2;
-}
-path {
-    stroke-dasharray: 11, 5;
-}
 
 header {
   position: fixed;
@@ -144,20 +142,20 @@ bottom:0;
   bottom:0;
 }
 
-#night {
-  left: 30px;
-}
+
 
 #showVideo {
   position: fixed;
-  left: 40%;
-  right:50%;
+  top:20px;
+  left: 50px;
   white-space: nowrap;
+
 }
 
 #myBtn {
+  top:20px;
 position: fixed;
-  right: 20px;
+  right: 70px;
 }
 
 </style>
@@ -165,7 +163,6 @@ position: fixed;
 <body>
 
 <header>
-<button type="button" id="night"onclick="myFunction()">Night Mode</button>
 <button id="showVideo">Open Camera</button>
 <button id="myBtn">Info</button>
 <!-- The Modal -->
@@ -173,7 +170,7 @@ position: fixed;
 <!-- Modal content -->
 <div class="modal-content">
 <span class="close">&times;</span>
-<p>This site is a landscape of words to take a walk in. Click anywhere on the screen to type or use the camera to map what you see to this shared grid.Thank you for building a world with me < 3 </p>
+<p>this site is a landscape of words to take a walk in. Click anywhere on the screen to type or use the camera to map what you see to this shared grid.thank you for building a world with me :0) </p>
 </div>
 </div>
   </header>
