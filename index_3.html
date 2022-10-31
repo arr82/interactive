@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles_2.css">
+    </head>
+  <body scroll="no" style="overflow: hidden">
+
+        <div class="container" id="questions_wrapper">
+            <div class="question">
+                <div>
+                    Why can't i cry?
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+
+            var questions_list = $(".container").html();
+            console.log(questions_list);
+
+            function myScroll() {
+                console.log('click');
+                var target_question = event.target;
+                target_question.scrollIntoView({behavior: "smooth", block: "center"});
+            }
+
+            $(".last").click(function() {
+                $(".container").append($("h2"));
+                // $(".question:last-of-type").after(questions_list);
+                console.log("last")
+            })
+
+            // $(".first").click(function() {
+            //     $(".container").prepend(questions_list);
+            //     $(this).removeClass("first");
+            //     console.log("first")
+            // })
+
+            var questions = [ "one", "two", "three","four", "five", "six","seven", "eight", "three","nine", "ten", "eleven","twelve", "thirtteen", "fourteen",];
+            var i = 0;
+
+            function addQuestion(){
+              $("<div class='question'  onclick='addQuestion()'>" + questions[i] + "</div>").insertAfter(".question");
+
+              i = i + 1;
+            }
+
+            $(".question").click(function() {
+                //$(".container").append($("h2"));
+                // $(".question:last-of-type").after(questions_list);
+                console.log(i)
+
+
+                $("<div class='question'  onclick='addQuestion()'>" + questions[i] + "</div>").insertAfter($(".question").last());
+
+                i = i + 1;
+            })
+
+
+        </script>
+    </body>
+</html>

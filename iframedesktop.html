@@ -296,15 +296,18 @@ $("#down").click(function() {
   // console.log(current_position);
   var new_position = current_y_position + 60;
   $("iframe").css('top', new_position);
+  console.log("down");
 })
 
 $("#up").click(function() {
   var iframe_position = $("iframe").offset();
-  console.log(iframe_position);
   var current_y_position = iframe_position.top;
+
   // console.log(current_position);
   var new_position = current_y_position - 60;
   $("iframe").css('top', new_position);
+  console.log(new_position);
+  console.log("up");
 })
 
 
