@@ -3,7 +3,7 @@
 
 
 @font-face {
-    font-family: 'centschbook_mono_btregular';
+    font-family: 'centmono';
     src: url('centschbook_monobt-webfont.woff2') format('woff2'),
          url('centschbook_monobt-webfont.woff') format('woff');
     font-weight: normal;
