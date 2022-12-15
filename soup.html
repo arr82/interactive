@@ -266,10 +266,35 @@ $('.box').css('position','absolute');
   var x = touch.pageX;
   var y = touch.pageY;
 
-  // Update the mouse coordinates with the touch coordinates
-  mouse = {x: x, y: y};
-});
+  var mouse = {x: 0, y: 0};
 
+homex = 0;
+homey = 0;
+forcex = 0;
+forcey = 0;
+magnet = 500;
+
+// Check if the user agent indicates a mobile device
+if (/Mobi/.test(navigator.userAgent)) {
+  // Use 'touchmove' instead of 'mousemove' to listen for finger movements
+  $(document).bind("touchmove", function(e) {
+    // Get the x and y coordinates of the touch event
+    var touch = e.touches[0];
+    var x = touch.pageX;
+    var y = touch.pageY;
+
+    // Update the mouse coordinates with the touch coordinates
+    mouse = {x: x, y: y};
+  });
+
+  // Remove the 'mousemove' event listener
+  $(document).unbind("mousemove");
+
+  // Replace it with a 'touchmove' event listener
+  $(document).bind("touchmove", function(e) {
+    // Get the x and y coordinates of the touch event
+    var touch = e.touches[0];
+    var
 
 </script>
 
