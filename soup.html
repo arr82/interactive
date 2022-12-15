@@ -270,24 +270,6 @@ $('.box').css('position','absolute');
   mouse = {x: x, y: y};
 });
 
-// ...
-
-// Remove the 'mousemove' event listener
-$(document).unbind('mousemove');
-
-// Replace it with a 'touchmove' event listener
-$(document).bind('touchmove', function(e) {
-  // Get the x and y coordinates of the touch event
-  var touch = e.touches[0];
-  var x = touch.pageX;
-  var y = touch.pageY;
-
-  // Update the position of the .pointer element
-  $(".pointer").css({left: x, top: y});
-});
-
-
-
 
 </script>
 
