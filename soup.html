@@ -17,6 +17,7 @@ body {
 }
 .everything {
   flex-wrap: wrap;
+  overflow: hidden;
   border-radius: 50%;
 padding-left: 10%;
 padding-right: 10%;
@@ -60,10 +61,7 @@ html {
       font-family: 'centmono';
       font-size: 15px;
       align:center;
-      padding-left: 60px;
-      padding-right: 60px;
-      padding-bottom: 20px;
-      padding-top: 40px;
+    margin: 10vw;
 
     }
 
@@ -95,18 +93,19 @@ margin-right:auto;
 
 
 <h1>
-    Below is a little more info about what stone soup is.
-  <a href="https://docs.google.com/spreadsheets/d/1K3lU1ZNQzaZROAs-FzeDPyt5kgxh20-73DK7I56buas/edit#gid=0">
+   Thank you so much for visiting! I hope you will accept my invitation to make and eat Stone Soup together.
+   Below is a little more info about what stone soup is.
+  <a href="https://docs.google.com/spreadsheets/d/1K3lU1ZNQzaZROAs-FzeDPyt5kgxh20-73DK7I56buas/edit#gid=1995511717">
    And here is where you can add what ingredients you want to bring
   </a>
   <br>
   <p>
-    *In the true spirit of stone soup I hope you feel you can bring things you already have laying around in your kitchen! No need to go out and get anything.
-My only request is that we keep the soup vegetarian to accomodate everyone's dietary preferences. I hope this isn't gross ❤︎
+    In the true spirit of stone soup I hope you feel you can bring things you already have laying around in your kitchen! No need to go out and get anything.
+My only request is that we keep the soup vegetarian to accomodate everyone's dietary preferences. ❤︎
 
 <br>
 <br>
-A final note: Because we are all contributing ingredients to the soup please try to arrive relatively on time so we can cook things in an order that makes sense. OR you can drop off ingredients to my desk sometime before 3pm the day of the party
+Because we are all contributing ingredients to the soup please try to arrive relatively on time or drop off ingredients to my desk sometime before 3pm the day of the party
   </p>
 </h1>
 </head>
@@ -197,16 +196,15 @@ A final note: Because we are all contributing ingredients to the soup please try
   <div class="box">you</div>
   <div class="box">bring</div>
   <div class="box">to</div>
-  <div class="box">924</div>
-  <div class="box">State</div>
-  <div class="box">Street</div>
-  <div class="box">Unit 5</div>
-  <div class="box">New</div>
-  <div class="box">Haven</div>
+  <div class="box">the</div>
+  <div class="box">Atrium</div>
+  <div class="box">at</div>
+  <div class="box">Yale</div>
+  <div class="box">SOA</div>
   <div class="box">on</div>
-  <div class="box">Thursday</div>
-  <div class="box">Nov.</div>
-  <div class="box">10th</div>
+  <div class="box">Tuesday</div>
+  <div class="box">Dec.</div>
+  <div class="box">20th</div>
   <div class="box">at</div>
   <div class="box">7:30</div>
   <div class="box">PM</div>
@@ -261,6 +259,34 @@ $('.box').css('position','absolute');
     $(document).mousemove(function (e) {
 			$(".pointer").css({ left: e.pageX, top: e.pageY });
 		});
+
+    $(document).bind('touchmove', function(e) {
+  // Get the x and y coordinates of the touch event
+  var touch = e.touches[0];
+  var x = touch.pageX;
+  var y = touch.pageY;
+
+  // Update the mouse coordinates with the touch coordinates
+  mouse = {x: x, y: y};
+});
+
+// ...
+
+// Remove the 'mousemove' event listener
+$(document).unbind('mousemove');
+
+// Replace it with a 'touchmove' event listener
+$(document).bind('touchmove', function(e) {
+  // Get the x and y coordinates of the touch event
+  var touch = e.touches[0];
+  var x = touch.pageX;
+  var y = touch.pageY;
+
+  // Update the position of the .pointer element
+  $(".pointer").css({left: x, top: y});
+});
+
+
 
 
 </script>
