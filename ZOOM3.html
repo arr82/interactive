@@ -107,6 +107,36 @@ window.addEventListener('touchend', handleScroll);
 // Set the innerHTML of the text element to the first paragraph in the paragraphs array
 document.getElementById("text").innerHTML = paragraphs[0];
 
+function handleScroll(event) {
+  // Initialize the deltaY value to 0
+  let deltaY = 0;
+
+  // If the event is a touch event
+  if (event.type.startsWith('touch')) {
+    // Get the deltaY value from the clientY property of the first touch
+    deltaY = event.touches[0].clientY;
+  } else {
+    // Otherwise, get the deltaY value from the event
+    deltaY = event.deltaY;
+  }
+
+  // Prevent the page from zooming
+  event.preventDefault();
+
+  // Increment the counter
+  counter++;
+
+  // If the deltaY value is greater than 0, the index is less than the length of the paragraphs array, and the counter is equal to or greater than the threshold
+  if (deltaY > 0 && i < paragraphs.length && counter >= threshold) {
+    // Reset the counter
+    counter = 0;
+
+    // Increment the index and append the next paragraph to the text element
+    i++;
+    document.getElementById("text").innerHTML += `${paragraphs[i]}`;
+  }
+}
+
 </script>
 </body>
 </html>
