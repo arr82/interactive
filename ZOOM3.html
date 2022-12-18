@@ -8,59 +8,32 @@
   overflow: hidden;
 }
 
+body{
+  font-size: 6vw;
+  margin: 5vw;
+}
+
+p{
+  font-size: 12pt;
+  text-align: center;
+}
+
 </style>
 </head>
 <body onload="initMap()">
-  <div id="text">once upon a timee<br>
-  in a big house<br>
-i was small<br>
+
+  <p> ☞pinch my site to get more out of it☜</p>
+
+
+<div id="text">This semester I made toys, tools, words, and gifts<br>
+This semester I made dice, a curtain, chairs, a set of board books, a soup, and tool to help me be less productive<br>
+I made a set of dice that can be used to generate over 20,000 6 part prompts, I made a curtain to provide privay without shutting out the possiblity
+of playful interaction, I made a bench that can fold into many difereny configurations joining or seperating those sitting in it, I made books about
+words, I made a collaborative soup, I made new words using grammamtically currect direvations as well as brand strategy guidlines and ai assisted generating<br>
 </div>
 
   <div id="map"></div>
   <script>
-//
-// // Split the text into an array of paragraphs
-// const paragraphs = document.getElementById("text").innerText.split('\n');
-//
-// // Initialize the index to 0
-// let i = 0;
-//
-// // Set the scroll-behavior CSS property of the html element to auto
-// document.querySelector('html').style.scrollBehavior = 'auto';
-//
-// // Initialize the counter to 0
-// let counter = 0;
-//
-// // Set the threshold for the counter
-// const threshold = 10;
-//
-// // Attach the wheel event listener to the map element
-// window.addEventListener('wheel', function(event) {
-//   // Prevent the page from zooming
-//   event.preventDefault();
-//
-//   // Increment the counter
-//   counter++;
-//
-//   // If the deltaY value is greater than 0, the index is less than the length of the paragraphs array, and the counter is equal to or greater than the threshold
-//   if (event.deltaY > 0 && i < paragraphs.length && counter >= threshold) {
-//     // Reset the counter
-//     counter = 0;
-//
-//     // Increment the index and append the next paragraph to the text element
-//     i++;
-//     document.getElementById("text").innerHTML += `${paragraphs[i]}`;
-//   }
-// });
-//
-// // Set the innerHTML of the text element to the first paragraph in the paragraphs array
-// document.getElementById("text").innerHTML = paragraphs[0];
-//
-
-
-
-//NEW
-
 
 // Split the text into an array of paragraphs
 const paragraphs = document.getElementById("text").innerText.split('\n');
@@ -75,7 +48,7 @@ document.querySelector('html').style.scrollBehavior = 'auto';
 let counter = 0;
 
 // Set the threshold for the counter
-const threshold = 10;
+const threshold = 25;
 
 // Function to handle the scrolling or zooming
 function handleScroll(event) {
@@ -136,6 +109,8 @@ function handleScroll(event) {
     document.getElementById("text").innerHTML += `${paragraphs[i]}`;
   }
 }
+
+
 
 </script>
 </body>
