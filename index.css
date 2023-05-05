@@ -1,7 +1,0 @@
-@font-face {
-    font-family: "cent";
-    src: url("CentSchbook MonoBT.ttf") format("truetype");
-}
-p.customfont {
-    font-family: "cent", serif;
-}
