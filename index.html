@@ -43,6 +43,7 @@ body {
 }
 
 
+
 .dot {
   position: absolute;
   width: 9px;
@@ -210,6 +211,12 @@ z-index: 0;
     margin: 0px;
     top:0;
 }
+
+@media (max-width: 768px) {
+  .left-column{
+  padding-bottom:60px;
+  }
+   }
 
 .right-column {
   position:sticky;
@@ -484,19 +491,19 @@ letter-spacing:-.5px;
   @media (max-width: 768px) {
     .logo{
   max-width: 50px;
+  padding-bottom: 8px;
     }
      }
 
   .hiddenText {
     opacity: 0;
-    position: absolute;
-    top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+    position: fixed;
+  transform: rotate(-45deg);
     transition: opacity 0.3s ease;
     font-size: 30px;
     line-height: -10px;
     white-space: nowrap;
+    color: black;
   }
 
   #logobutton:hover .hiddenText {
@@ -534,7 +541,7 @@ letter-spacing:-.5px;
 <div class="logocontainer">
     <button id="logobutton">
       <img class="logo" src="logo.png" alt="Logo">
-      <!-- <span class="hiddenText">This site was last updated on 02.27.2024 all rights reserved © Ainsley Romero 2024</span> -->
+      <!-- <span class="hiddenText">welcome to my site! It was last updated on 02.27.2024 </span> -->
     </button>
 
 
@@ -1008,7 +1015,7 @@ createColorChangingButton('changeColorButton8', [36], '#D6B4BD');
       });
     });
 
-    //logobutton
+//     logobutton
 //     document.addEventListener("DOMContentLoaded", function () {
 //   const logobutton = document.getElementById("logobutton");
 //
