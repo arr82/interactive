@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+@font-face {
+  font-family: 'NimbusSanL-Reg';
+    src:url('font/NimbusSanL-Reg.eot'); /* IE9 Compat Modes */
+    src:url('font/NimbusSanL-Reg.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('font/NimbusSanL-Reg.woff2') format('woff2'), /* Super Modern Browsers */
+        url('font/NimbusSanL-Reg.woff') format('woff'), /* Pretty Modern Browsers */
+        url('font/NimbusSanL-Reg.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('font/NimbusSanL-Reg.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+font-family: 'CenturyStd-BookCondensed';
+  src: url('font/CenturyStd-BookCondensed.eot'); /* IE9 Compat Modes */
+  src: url('font/CenturyStd-BookCondensed.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      url('font/CenturyStd-BookCondensed.woff2') format('woff2'), /* Super Modern Browsers */
+      url('font/CenturyStd-BookCondensed.woff') format('woff'), /* Pretty Modern Browsers */
+      url('font/CenturyStd-BookCondensed.ttf')  format('truetype'), /* Safari, Android, iOS */
+      url('font/CenturyStd-BookCondensed.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  /* font-family: -apple-system,"Oriya Sangam MN"; */
+  font-family: 'NimbusSanL-Reg';
+}
+
+
+.dot {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+   z-index: 2;
+}
+
+.dot-label {
+  position:relative;
+  left:8px;
+  top:8px;
+  font-size:16px;
+  color: black;
+  display: none;
+  white-space: pre;
+  z-index: 1;
+  mix-blend-mode: exclusion;
+  transform: rotate(45deg);
+
+}
+
+.content-container {
+  z-index: 2;
+}
+
+.center-line {
+  position: absolute;
+  background-color: black;
+  pointer-events: none;
+}
+
+.center-line-x {
+  width: calc(100vw - 70px); /* 100% of the viewport width minus 70 pixels (35 pixels on each side) */
+  color: red;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center-line-y {
+  width: 1px;
+  height: calc(100vh - 70px); /* 100% of the viewport height minus 70 pixels (35 pixels on each side) */
+  top: 50%;
+  left: 50vw; /* 50% of the viewport width */
+  transform: translateY(-50%);
+}
+
+.center-text-x {
+  color:black;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-text-y {
+  color:black;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
+  margin-left: -10px; /* Adjust this value based on your text's font and size */
+}
+
+.center-text-x2 {
+  position: absolute;
+  top: 96%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-text-y2 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(90deg);
+  margin-right: -5px; /* Adjust this value based on your text's font and size */
+}
+
+
+.page {
+  padding: 24px, 0px;
+  bottom: 10px;
+  left: 10px;
+  position: relative;
+  transform: rotate(45deg);
+  display: block;
+  border: none;
+  color: black;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.about {
+  padding: 24px 0px;
+  position: fixed;
+  top: 20px;
+  right: 0px;
+  transform: rotate(45deg);
+  display: block;
+  border: none;
+  color: black;
+  text-decoration: none;
+  font-family: sans-serif;
+  z-index: 2;
+}
+
+.scroll-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  z-index: 0;
+}
+
+.helper {
+  position: sticky; /* Position helper element */
+  width: 100%; /* Take up entire width */
+  height: 100%; /* Take up entire height */
+  /* pointer-events: none; /* Prevent interactions with helper element */ */
+  z-index: 0;
+}
+
+.dot-content {
+  display: grid;
+z-index: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 0;
+  height: 200px;
+  position: relative;
+}
+
+.left-column {
+  position: sticky;
+  flex: 1.5;
+    width: calc(50% - 10px); /* Each column takes 50% of the screen width with a gap of 10px */
+    box-sizing: border-box; /* Include padding and border in the width */
+    padding-right: 0px;
+    padding: 0px;
+    margin: 0px;
+    top:0;
+}
+
+.right-column {
+  position:sticky;
+  background-color: ;
+  top: 0;
+  flex: 1;
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+}
+
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+  .left-column,
+  .right-column {
+  position: relative;
+  flex: none;
+  width: 100%; /* Reset width to 100% on smaller screens */
+     /* Add margin to separate the columns on smaller screens */
+  order: 1; /* Change the order for both columns */
+  z-index: 0;
+   }
+
+.left-column {
+    order: 2;
+   }
+ }
+
+.template-image{
+  max-width: 100%;
+  height: auto;
+  margin-bottom:-10px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width:100%;
+  height:100vh;
+  index: 1;
+
+}
+
+h1{
+font-family: 'NimbusSanL-Reg';
+padding-top: 10px;
+padding-left: 20px;
+padding-right: 85px;
+margin-bottom: 0px;
+font-size:12pt;
+font-weight:normal;
+margin-top: 5px;
+font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  h1{
+  font-size: 20px;
+  }
+   }
+
+p{
+padding-bottom: 10px;
+padding-left: 20px;
+padding-right: 85px;
+margin-top: 5px;
+white-space: pre-wrap;
+font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  p{
+  font-size: 20px;
+  }
+   }
+
+
+.image-container img:first-child {
+  max-width: 80vw; /* Adjust the percentage as needed */
+  max-height: 80vh; /* Adjust the percentage as needed */
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .image-container img:first-child {
+    max-width: 80vw; /* Adjust the percentage as needed */
+    max-height: 70vh; /* Adjust the percentage as needed */
+    width: auto;
+    height: auto;
+  }
+   }
+
+#changeColorButton{
+  color:black;
+text-decoration: none;
+display: block;
+}
+#changeColorButton2{
+  color:black;
+text-decoration: none;
+display: block;
+}
+#changeColorButton3{
+  color:black;
+text-decoration: none;
+display: block;
+}
+#changeColorButton4{
+  color:black;
+text-decoration: none;
+display: block;
+
+}
+#changeColorButton5{
+  color:black;
+text-decoration: none;
+display: block;
+}
+#changeColorButton6{
+  color:black;
+text-decoration: none;
+display: block;
+}
+#changeColorButton7{
+  color:black;
+  text-decoration: none;
+  display: block;
+}
+#changeColorButton8{
+  color:black;
+text-decoration: none;
+display: block;
+}
+
+.buttons{
+  position: fixed;
+  left:19px;
+  top:19px;
+  background-color: auto;
+  z-index: 10;
+}
+
+.button-scroll-container{
+  position: fixed;
+  left: 19px;
+  top: 19px;
+  z-index: 10;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(1vh - 38px);
+}
+/* Add a class to hide the container */
+    .buttons-scroll-container.hidden {
+    display:none;
+    }
+
+/*overalls*/
+.dot:nth-child(31) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+white-space: normal;
+}
+
+/*valentine*/
+.dot:nth-child(19) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+top:-150px;
+left:-145px;
+}
+
+/*wordsare*/
+.dot:nth-child(5) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+top:-105px;
+left:-100px;
+}
+
+/*spoint*/
+.dot:nth-child(24) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+top:-105px;
+left:-100px;
+}
+
+/*articulators*/
+.dot:nth-child(29) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+top:-99px;
+left:-95px;
+}
+
+@media (max-width: 768px) {
+/*little founders*/
+.dot:nth-child(25) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+  top:-135px;
+  left:-130px;
+}
+}
+
+@media (max-width: 768px) {
+/*rosecolored*/
+.dot:nth-child(26) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+  top:-130px;
+  left:-125px;
+}
+}
+
+/*window of stone*/
+.dot:nth-child(8) .dot-label {
+  /* Adjust styles as needed for the second dot label */
+letter-spacing:-.5px;
+}
+
+.white-div {
+            width: 100%; /* Adjust width as needed */
+            height: 100%; /* Adjust height as needed */
+            background-color: red;
+        }
+
+
+
+
+        #up{
+          position: fixed;
+          left: 19px;
+          top: 0px;
+          z-index: 5;
+          padding: 12px 0px;
+          max-width: 60px;
+          z-index: 3;
+          font-size: 25px;
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+        }
+
+
+    #logobutton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    max-width: 70px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    max-width: 70px;
+    height: auto;
+    padding: 12px 0px;
+  }
+
+  .hiddenText {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+    transition: opacity 0.3s ease;
+    font-size: 30px;
+    line-height: -10px;
+    white-space: nowrap;
+  }
+
+  #logobutton:hover .hiddenText {
+    opacity: 1;
+  }
+
+  /* #logobutton:hover img.logo {
+  transform: scale(3);
+} */
+
+
+</style>
+</head>
+<title>chart</title>
+<body>
+  <div class="buttons-scroll-container">
+    <div class="buttons">
+      <a href="#" id="changeColorButton">Books,</a>
+      <a href="#" id="changeColorButton2">Branding,</a>
+      <a href="#" id="changeColorButton3">Posters,</a>
+      <a href="#" id="changeColorButton4">Illustration,</a>
+      <a href="#" id="changeColorButton5">Spatial,</a>
+      <a href="#" id="changeColorButton6">Objects,</a>
+      <a href="#" id="changeColorButton7">Typography,</a>
+      <a href="#" id="changeColorButton8">Motion,</a>
+    </div>
+  </div>
+
+  <div class="scroll-container">
+    <button id="up">↑</button>
+
+<!-- <img class="logo" src="logo.png" alt="Logo"> -->
+
+
+<div class="logocontainer">
+    <button id="logobutton">
+      <img class="logo" src="logo.png" alt="Logo">
+      <!-- <span class="hiddenText">This site was last updated on 02.27.2024 all rights reserved © Ainsley Romero 2024</span> -->
+    </button>
+
+
+    <!-- <img class="logo" src="logo.png" alt="Logo"> -->
+    <a class="about" href="about.html">Ainsley Romero</a>
+    <!-- <img class="logo"src="logo.png"></img> -->
+    <div class="center-line center-line-x"></div>
+    <div class="center-line center-line-y"></div>
+    <div class="center-text-x">investigating form</div>
+    <div class="center-text-y">from play</div>
+    <div class="center-text-x2">investigating language</div>
+    <div class="center-text-y2">for play</div>
+    <div class="content-container" id="contentContainer">
+      <!-- Helper element moved here -->
+      <div class="helper"> </div>
+
+      <!-- Content will be dynamically displayed here using JavaScript -->
+      <canvas id="linecanvas" class="linecanvas" style="margin-top: -10px; pointer-events: none;"></canvas>
+    </div>
+
+    <div class="dot-container" id="dotContainer">
+      <!-- Dots will be dynamically added here using JavaScript -->
+    </div>
+  </div>
+
+  <!-- template -->
+  <template id="dotContentTemplate">
+    <div class="dot-content">
+      <div class="image-container">
+        <img src="" alt="Image1" class="template-image">
+      </div>
+
+      <div class="container">
+        <div class="left-column" id="additionalImagesContainer">
+        </div>
+
+        <div class="right-column" id="rightColumn">
+          <h1>Title</h1>
+          <p>Description</p>
+        </div>
+      </div>
+    </div>
+  </template>
+</body>
+
+  <script>
+  const dotContainer = document.getElementById('dotContainer');
+  const contentContainer = document.getElementById('contentContainer');
+  let activeDotData = null; // To track the active dot
+  let activeLabel = null; // To track the active label
+  let activeTemplate = null;
+  let hoverTimeout; // To track the hover timeout
+
+  const dotsData = [
+
+//Books
+{ x: 23, y: 65, label: 'Page 11 Book',
+    template: { title: 'Page 11, Book 2023', description: 'This book is a nonsensical anthology of a personal library. It is meant to be a sort of portrait of the library as an extension of its curator. The construction is an exquisite corpse of genre and imagery with a layout that is influenced or infected by the dimensions and layout of the other books its contents come from. The order of the contents is a map of the spatial organization of the books in the library. The text was generated by a simple system; the first book was cracked open to page 11 and the last word on page 11  linked to the next book by a common word so the text reads continuously. This book was digitally printed and perfect bound at the Yale School of Art.',
+    content: 'Content for Dot 2',
+    images: ['img/anthology/1.png','img/anthology/2.gif','img/anthology/3.jpg','img/anthology/4.jpg','img/anthology/mu.jpg','img/anthology/5.jpg',  ] } },
+
+{ x: 50, y: 50, label: 'To No Quantifiable End MFA Thesis',
+    template: { title: 'To No Quantifiable End, MFA Thesis Book 2023', description: 'This book is a perforated collection of the writing that surrounded all of my projects and research over the course of my MFA work and play. Writing the book consisted of cutting and rearranging separate pieces to uncover patterns in the subjects and methods of my work. I wanted the flexible structure of the book to be a continuation of the playful process of research that brought about the work. The book is meant to be torn apart into a paper toy for further rearranging, rewriting, and hopefully play. The book is laser cut, inkjet printed with hand sewn binding and a screen printed wooden box/cover. A copy is now housed in the Robert Haas Special Collections Library at Yale waiting to be interacted with. I hope for my work to be a record of that pleasurable impulse to grasp for what has no quantifiable end, no quantifiable value, no quantifiable use. My chosen method is through making objects that invite play because I believe Play to be a direct rebellion against a world (and a mind) that only values what it can see, hold and profit from. This is a short version of the thesis statement that came out of this work. ',
+    content: 'Content for Dot 2',
+    images: ['img/mfa/mfacoverfinal.png','img/mfa/2.gif','img/mfa/1 2.png','img/mfa/4.jpg','img/mfa/5.jpg','img/mfa/3.jpg','img/mfa/7.jpg','img/mfa/8.jpg','img/mfa/mfacover2 2.png', ] } },
+
+{ x: 63, y: 48, label: 'Uninhibitions BFA Thesis',
+    template: { title: 'UNINHIBITIONS, BFA Thesis Book and Exhibition 2019', description: 'My BFA capstone research focused on creativity as an innately human quality and the role it plays in development and identity of children and adults. From my research I created a workbook of writing and drawing prompts that were intended to challenge the participating artists to pilgrimage back to that uninhibited state of creativity that we more easily and naturally found ourselves in during childhood. The workbooks were distributed to 200+ people ages 5 to 80+ and all of the contributions were collected and exhibited together as the work: UNINHIBITIONS. The findings of my research were compiled into a book entitled UNINHIBITIONS.  ',
+    content: 'Content for Dot 2',
+    images: ['img/bfa/coverbfa.png','img/bfa/1.gif','img/bfa/2.jpg','img/bfa/3.jpg','img/bfa/4.png','img/bfa/5.png','img/bfa/6.png','img/bfa/7.png','img/bfa/8.png','img/bfa/9.png','img/bfa/10.png','img/bfa/11.png','img/bfa/12.gif','img/bfa/13.png', ] } },
+
+{ x: 27, y: 37, label: 'Trash Zine',
+    template: { title: 'Trash Zine, 2018', description: 'This zine is a compilation of collages made of found scraps and ephemera from the streets of New York. The collages are illustrations of places and faces in the city. This zine is a self directed project.',
+    content: 'Content for Dot 2',
+    images: ['img/zines/zcover.png','img/zines/papercut.gif','img/zines/1.jpg','img/zines/2.jpg','img/zines/3.jpg','img/zines/4.jpg', ] } },
+
+{ x: 42, y: 88, label: 'Words Are Books',
+      template: { title: 'Words Are Book Series, 2023', description: 'This series of books responds to three questions; What are words? Where do words come from? And What do we do with words? The contents of these books came from data scraping all of Yale’s library databases for items that had the sequence “words are” appear somewhere in the title. When I collected and stripped down these bits from different titles of all genres, the shortened phrases all starting with words are started to read as a poetic children’s book. I separated the text into the three volumes each responding to a different question about words and made them into board books. ',
+      content: 'Content for Dot 2',
+      images: ['img/wordare1.png','img/words are 2.png','img/wordschrome.jpeg','img/words are 3.png', ] } },
+
+{ x: 44, y: 63, label: 'Good Grief Book',
+      template: { title: 'Good Grief, Book 2021', description: 'This book is an exploration of my family history. The book contains images of my family with captions written by my Dad side by side with screenshots I took from google earth in the same cities and towns where the photo came from, all of which are places I have never traveled to in person. The images are broken up by my own writings and response to the images and my Dad’s captions. This book is inkjet printed, and perfect bound with circular holes cut perforating the space between image and text and omitting and obscuring the images. The making of the book was an attempt to understand the people and the stories I am made from and the very good kind of grief that motivates this yearning for reconnection. ',
+      content: 'Content for Dot 2',
+      images: ['img/goodgrief/ggalt.png','img/goodgrief/g2.gif','img/goodgrief/g3.jpg','img/goodgrief/g4.jpg','img/goodgrief/g5.jpg','img/goodgrief/g6.jpg','img/goodgrief/g7.jpg','img/goodgrief/g1.jpg','img/goodgrief/g8.jpg', ] } },
+
+{ x: 8, y: 75, label: 'Big Hurt Exhibition & Book',
+      template: { title: 'Big Hurt, Book and Exhibition Posters 2018', description: 'Big Hurt was a photo exhibition by Louisa Ballif about actualizing the consequences of gun violence. The book contains images and writing from her trip across the United States documenting different sites of recent incidents involving gun violence.',
+      content: 'Content for Dot 2',
+      images: ['img/big hurt/bh1.png','img/big hurt/bh2.jpg','img/big hurt/bh3.jpg','img/big hurt/bh4.jpg','img/big hurt/bh5.jpg','img/big hurt/bh6.jpg','img/big hurt/bh7.jpg','img/big hurt/bh8.jpg','img/big hurt/bh9.jpg','img/big hurt/bh10.jpg','img/big hurt/bh11.jpg','img/big hurt/bh12.jpg', ] } },
+
+{ x: 11, y: 80, label: 'Window of Stone Book',
+      template: { title: 'Window of Stone, Book 2022', description: 'This book came out of my research on the symbolism of 18th century gravestone carving in the north eastern United States. I was interested in the gravestone as a tangible expression of the values, spiritual beliefs, and power structures of a society and their understanding and reconning with death. The contents of the book come from images in the Farber Gravestone collection. I cataloged all of the words photographed in the collection and used them to write a poem from the perspective of the gravestone. Here is a short excerpt; "On field I lie Where the tender flower sleeps And worms keep house. Stop here a while and view my Window of stone. Know that my voice marks thy being." This book was risograph printed and perfect bound at Yale School of Art.',
+      content: 'Content for Dot 2',
+      images: ['img/gravestone/gravecover3.png','img/gravestone/g2.gif', 'img/gravestone/g3.png','img/gravestone/g4.png','img/gravestone/g5.png','img/gravestone/g6.png','img/gravestone/g7.png','img/gravestone/g8.png','img/gravestone/g9.jpg',] } },
+
+{ x: 10, y: 59, label: 'Ursa Minor Cover',
+      template: { title: 'Ursa Minor, Book Cover 2020', description: 'A book of prose poetry written by former Utah poet laureate Lance Larsen. Published my micro-press Elsewhere. The cover is a cut paper collage. ',
+      content: 'Content for Dot 2',
+      images: ['img/cover1.jpg','img/Ursa.png', ] } },
+
+{ x: 10, y: 65, label: 'OHNM Cover & Illustrations',
+      template: { title: 'Old Habits New Markets, Book Cover and Illustrations 2020', description: 'A book of poetry written by Ori Fienberg published by micro-press Elsewhere. The illustrations and cover are a combination of collage and ink drawings. ',
+      content: 'Content for Dot 2',
+      images: ['img/cover2.jpg','img/oldh.png', ] } },
+
+{ x: 11, y: 45, label: 'One Who Steals This Leaf Zine',
+      template: { title: 'One Who Steals This Leaf, Zine 2017', description: 'A collection of collages made from found trash and ephemera. This is an early version of a personal collage journaling project that has been ongoing since 2016 until now. ',
+      content: 'Content for Dot 2',
+      images: ['img/leafc.png','img/leaf2.gif', ] } },
+
+{ x: 53, y: 15, label: 'Katzimir Melavich Zine',
+      template: { title: 'Katzimir Melavich, Zine 2017', description: 'This zine was a gift a tribute to my dear Mentor and professor Linda Reynolds who has a love for Russian Constructivism and cats.',
+      content: 'Content for Dot 2',
+      images: ['img/kat2.jpg','img/kat.gif', ] } },
+
+//Branding
+{ x: 61, y: 6, label: 'Bakery Studio',
+      template: { title: 'Bakery Studio, 2020-2021', description: 'Bakery Studio was a collaborative project between me and my dear friend and woodworker Louisa Ballif. The first iteration of Bakery was fueled by 4 am sourdough and resulted in various wooden experiments. Chairs, candelabras, chess sets, desks. No, we don’t make bread, but we like making things that fill us. Fill our spaces. We make things that last. We know that lasting sustenances comes from both the frivolous and vital things in life. Louisa and I collaborated to design and hand make wooden furniture and household items like candle holders and toys in small batches. ',
+      content: 'Content for Dot 2',
+      images: ['img/bakery/b1.jpg','img/bakery/b2.jpg','img/bakery/b32.gif','img/bakery/b4.jpg','img/bakery/b5.jpg','img/bakery/b6.jpg','img/bakery/b7.jpg','img/bakery/b8.jpg','img/bakery/b9.jpg','img/bakery/pink.png','img/bakery/invite 2.png','img/bakery/invite 3.png', ] } },
+
+{ x: 16, y: 36, label: 'Ban.do Campaign',
+      template: { title: 'Ban.do Warehouse Sale, Branding 2020', description: 'Ban.do is a colorful vintage inspired retailer out of LA that asked me to design and illustrate the branding for their yearly warehouse sale. This included an email campaign, web, and social media assets. Visuals for the campaign were made through a combination of hand collage and painting with digital collage and animation. ',
+      content: 'Content for Dot 2',
+      images: ['img/ban.do/1.jpg','img/ban.do/all.png','img/ban.do/2.png','img/ban.do/3.png','img/ban.do/4.gif','img/ban.do/5.png','img/ban.do/6.png','img/ban.do/6.jpg',] } },
+
+//Posters
+{ x: 28, y: 12, label: 'Riso Swatch Poster',
+      template: { title: 'Risograph Swatch Poster, 2018', description: 'Swatch test poster I designed as a student employee for the Brigham young university design department.',
+      content: 'Content for Dot 2',
+      images: ['img/riso.jpg','img/riso 2.jpg', ] } },
+
+{ x: 22, y: 39, label: 'Stephen Doyle Poster',
+      template: { title: 'Stephen Doyle Poster, 2019', description: 'Poster for a lecture on design given by Stephen Doyle and Gael Towey. This poster was drawn by hand and riso printed.',
+      content: 'Content for Dot 2',
+      images: ['img/doyle.jpg','img/doyle-email.gif', ] } },
+
+{ x: 33, y: 30, label: 'Museum of Things Poster',
+      template: { title: 'Museum of Things Poster, 2019', description: 'A Speculative project for the Museum of Things in Berlin. This poster was screen printed.',
+      content: 'Content for Dot 2',
+      images: ['img/thing.png','img/thing 4.png', ] } },
+
+{ x: 24, y: 25, label: 'Radish Festival Poster',
+      template: { title: 'Radish Festival Poster 2019', description: 'Speculative project for the “Night of the Radishes”, a festival held annually in Oaxaca City, Mexico displaying intricately carved sculptures made from radishes. This poster was screen printed.  ',
+      content: 'Content for Dot 2',
+      images: ['img/radish.png','img/radish 2.png', ] } },
+
+{ x: 50, y: 86, label: 'A Valentine in Bliss Symbols',
+      template: { title: '', description: '',
+      content: 'Content for Dot 2',
+      images: ['img/bliss.jpg', ] } },
+
+//illustrations
+{ x: 41, y: 17, label: 'Cowgirl Lovers print',
+      template: { title: 'Cowgirl Lovers, Screenprint 2023', description: '',
+      content: 'Content for Dot 2',
+      images: ['img/cowgirl couple copy.png','img/cowgirl pattern.png', ] } },
+
+{ x: 26, y: 18, label: 'Illustrations for Season',
+      template: { title: 'Illustrations for Season, 2021', description: 'Painted and cut paper illustrations for SEASON health a nutrition care, education, and food delivery service. ',
+      content: 'Content for Dot 2',
+      images: ['img/SEASON/s1.png','img/SEASON/s2.jpg','img/SEASON/s3.jpg','img/SEASON/s4.jpg','img/SEASON/s5.jpg', ] } },
+
+{ x: 28, y: 22, label: 'Cloud Chart Print',
+      template: { title: 'Cloud Chart, Screenprint 2019', description: '',
+      content: 'Content for Dot 2',
+      images: ['img/cloud.jpg','img/cloud2.png', ] } },
+
+{ x: 25, y: 8, label: 'Papercut Illustrations',
+            template: { title: 'Papercut Illustrations', description: 'An ongoing collection of paper cut illustrations. Most of these are done with scissors and hole punches between my formal design projects or late into the night for fun. ',
+            content: 'Content for Dot 2',
+            images: ['img/cut.png','img/house.gif','img/black2.png','img/cat.jpg','img/bird.png','img/lib.png','img/dandp.png','img/fruit.jpg','img/hand.jpg',] } },
+
+//Spatial
+{ x: 35, y: 90, label: 'Spoint Multimedia',
+      template: { title: 'Spoint, Multimedia 2023', description: 'This work was a response to a workshop given by designer Linda van Deursen on The Image of Graphic Design. What is the difference between images OF graphic design and graphic design? Are they one in the same? Do things ever need to become real or produced or is proof of concept, a rendering, a mockup as far as we must take things? This made me think about names and titles as verification, as a way of making something real. So made over 200 new words and terms for graphic design using different methods of word derivation like adding and swapping latin roots, and conjugating prefixes and suffixes. I used word and title generators, and created nonsensical words based on associations of different distinct sounds. I wrote with these new words and presented them as a mock syllabus for an imaginary class on Spointing; one of my new terms for graphic design. The piece was displayed in the 2023 MFA thesis Exhibition “As They Made Their Way Out” at the Yale School of Art. ',
+      content: 'Content for Dot 2',
+      images: ['img/spoint/s1.png','img/spoint/s3.gif','img/spoint/s2.png','img/spoint/s4.png', ] } },
+
+{ x: 77, y: 37, label: 'Little Founders Daycare',
+      template: { title: 'Little Founders, 2021', description: 'I was privileged to work on spatial design and branding for this on-site daycare for Podium under the art direction of Actual Source Studio. I created a full illustration library for the brand, worked with fabricators to create custom rugs, wall fixtures, and designed and painted two murals in the space. The illustration library evolves from the infant room to the preschool room from just the use of abstract shapes to animals and letters and numbers in the preschool room. ',
+      content: 'Content for Dot 2',
+      images: ['img/littlefound/f1 2.png','img/littlefound/rug.png','img/littlefound/f4.jpg','img/littlefound/f3.jpg','img/littlefound/f5.png','img/littlefound/f6.jpg','img/littlefound/f7.png','img/littlefound/ele.png','img/littlefound/f9.png','img/littlefound/f8.jpg', ] } },
+
+{ x: 83, y: 29, label: 'Rose Colored Glasses',
+      template: { title: 'Rose Colored Glasses, Color Factory 2021', description: 'I had the honor to design this room for The Color Factory in Houston TX along side their production team. The room is separated into sections each with shapes that abstractly reference the five senses. Red glasses are distributed to visitors to cancel out the red pattern on the walls revealing roses or simple joys illustrated by artist Efdot.',
+      content: 'Content for Dot 2',
+      images: ['img/color factory/r3.jpg','img/color factory/r1.jpg','img/color factory/r4.jpg','img/color factory/r2.jpg','img/color factory/r6.JPG','img/color factory/map.png','img/color factory/r7.jpg', ] } },
+
+{ x: 74, y: 33, label: 'Little Wing Daycare',
+      template: { title: 'The Little Wing, 2018', description: 'I was privileged to help in the development of the branding and illustration library for The Little Wing. The Little Wing is a child care space within a community workspace for women. The branding was developed in collaboration with and under the Art direction of designer Rosie Naberezny. I developed an illustration style and library for the daycare, designed a mural, apparel, and print collateral. ',
+      content: 'Content for Dot 2',
+      images: ['img/little wing/lw2.jpg','img/little wing/lw1.gif','img/little wing/lw4.jpg','img/little wing/lw3.jpg','img/little wing/lw5.jpg','img/little wing/lw6.gif','img/little wing/lw7.jpg','img/little wing/lw8.jpg','img/little wing/lw9.png', ] } },
+
+//Objects
+{ x: 78, y: 12, label: 'Approximate Bench',
+     template: { title: 'Approximate Bench, 2022',
+     description: 'This piece was made in response to a workshop on disrupting public space directed by Sigi Moeslinger and Masamichi Udagawa. The bench consists of 3 plywood chairs and 6 wooden dividers/arm rests. The pieces are laced together with cotton rope and be rearranged and dismembered at the will of the strangers or friends sitting on it.', content: 'Content for Dot 1',
+     images: ['img/chair/c1.png','img/chair/c2.png','img/chair/c4.jpeg','img/chair/fam.jpg',] } },
+
+{ x: 84, y: 84, label: 'Articulators Dice',
+      template: { title: 'Articulators, Dice for Creative Meditation 2023', description: 'A set of 6 dice for defining parts of a creative process or project; the inspiration or jumping off point, the methodological approach for making, the type of object, the affordances of the work, the usefulness of the piece, and how to start working. I have always had a fascination with dice and their history in fortune telling and divination as well as their arbitrary use in games of chance. I find great catharsis in injecting some chance into my creative process and being forced to relent full control. Dice were the perfect form for me to utilize in a humorous but linguistically calculated way to express this relationship to power, choice, and chance in the creative process. The dice and their based are 3D printed in resin.',
+      content: 'Content for Dot 2',
+      images: ['img/dice/d1.gif', 'img/dice/d2.png', 'img/dice/d3.png','img/dice/d4.png','img/dice/d5.png','img/dice/d6.png','img/dice/d7.png','img/dice/d8.png', ] } },
+
+{ x: 82, y: 23, label: 'Book Train',
+      template: { title: 'Book Train, 2023', description: 'This piece was a collaboration with Designer Filip Birkner. The Book train is a mobile and modular system of 17 wooden bookcases, one for each member of our cohort in the Yale school of Art graphic design program. These carts were designed to display the thesis books of every participating artist in the Thesis Exhibition As They Made Their Way Out, 2023. These book carts served as a functional display in the exhibition and as parting gifts for each member of our class with each one painted a particular color to represent the artist and their work. The carts can be used to display an open book ontop and are open on the side for more storage. Filip and I collaboratively designed and constructed the carts by hand. ',
+      content: 'Content for Dot 2',
+      images: ['img/carts/2.jpeg','img/carts/1.jpeg','img/carts/3.jpeg','img/carts/4.jpg','img/carts/5.jpeg','img/carts/6.jpeg','img/carts/7.JPG','img/carts/8.jpeg','img/carts/cart.gif', ] } },
+
+{ x: 90, y: 18, label: 'Color Sorting Overalls',
+      template: { title: 'Color Sorting Overalls, 2023', description: 'I pattern drafted and constructed this piece by hand for my nephew as an interactive and educational tool for identifying and sorting objects he finds into the different transparent pockets. The colors are arranged on the garment with the primary colors on the top, secondary colors on the front legs and neutral colors on the back. The piece is made from 100% unbleached cotton canvas, recycled bias tape, and a poly blend sheer Voile. ',
+      content: 'Content for Dot 2',
+      images: ['img/over.png','img/cy.png', ] } },
+
+{ x: 42, y: 10, label: 'Textile Design',
+      template: { title: 'Textile Design, 2018', description: 'All designs were illustrated by hand, translated to a digital format and printed on cotton Twill. ',
+      content: 'Content for Dot 2',
+      images: ['img/flower.jpg','img/dand.jpg','img/berry.jpg','img/flowerfab.png', ] } },
+
+{ x: 82, y: 13, label: 'Caterpillar Game',
+      template: { title: 'Caterpillar Game, 2023', description: 'This toddler toy was designed, carved, and hand painted by my partner Billy Heyne and I. The game consists of 9 sets of 5 colored beads each marked with dots counting from 1 to 5 to allow for color or number based play with the toy. The base and the beads are made from wood and non toxic acrylic paint and the antenna pieces are a coated metal. ',
+      content: 'Content for Dot 2',
+      images: ['img/caterpillar/c1.jpg','img/caterpillar/c2.jpg','img/caterpillar/c3.jpg','img/caterpillar/c4.jpg','img/caterpillar/c5.jpg', ] } },
+
+{ x: 52, y: 11, label: 'Merch for The Wing',
+      template: { title: 'Merch for The Wing, 2018', description: 'As a graphic design intern at The Wing, I created a series of illustrations and graphics for line of merchandise including apparel, mugs, jewelry, greeting cards, phone and laptop cases and more under the art direction of Deva Purdue. Photos were art directed by Nina Lilliebjerg and Adriana Gallo, photographed by Aileen Son, and styled by Margaret MacMillan Jones.',
+      content: 'Content for Dot 2',
+      images: ['img/wing/w.jpg', 'img/wing/1.jpg','img/wing/2.jpg','img/wing/3.jpg','img/wing/4.png','img/wing/5.jpeg',] } },
+
+//Typography
+{ x: 30, y: 50, label: 'Enzo Display Typeface',
+      template: { title: 'Enzo Display, Typeface 2022', description: 'Enzo display is cross species collaboration between me and my dog Enzo. I gave Enzo construction paper to shred every morning over the course of a month and from those hundreds of shreds, I pulled out pieces that resembled each letter of the alphabet. The papers were then scanned and digitized for the typeface.',
+      content: 'Content for Dot 2',
+      images: ['img/enzo/encover.png', 'img/enzo/e3.png','img/enzo/e4.png','img/enzo/e5.jpg','img/enzo/e6.png', ] } },
+
+{ x: 36, y: 66, label: 'Borzoi Display Typeface',
+      template: { title: 'Borzoi Display, Typeface 2021', description: 'This is a display typeface called Borzoi. This work is based on various hand drawn book covers by the prolific American type designer, W.A.Dwiggins. I was drawn to the surprising port optional relationship between the caps and lowercase glyphs as well as the complex angles of each counter. There is such drama and playfulness in the work for Dwiggins and I wanted to create something with the same free form nature. It was challenging to determine which of his quarks to preserve and what to standardize to create consistency. I kept the relationship of narrow lowercase to wide and round caps as well as the tight spacing and angled. Counters but I added weight and standardized the x heights. This project was so fun to work on and I feel I have just scratched the surface I would love to add onto this family and create more glyphs for this specific typeface.',
+      content: 'Content for Dot 2',
+      images: ['img/borzoi/z2.png','img/borzoi/alt 2.png','img/borzoi/z3.png','img/borzoi/z4.png', ] } },
+
+//motion
+{ x: 29, y: 73, label: 'Empty Orchestra Film Titles',
+      template: { title:'Empty Orchestra, Film Titles 2022', description: 'I was honored to create opening and closing credits, animations and captions for the Documentary Feature Film “Empty Orchestra”. Directed by Nicole Hawkins. This film premiered at the 2023 Brooklyn film festival. In the religiously homogeneous Provo, Utah, a group of self-proclaimed misfits try to replace the devotion and community they once found in the Mormon church with weekly karaoke singing. All of the animations I created for the film were hand painted on film.',
+      content: 'Content for Dot 2',
+      images: ['img/empty orchestra/4.gif','img/empty orchestra/2.png','img/empty orchestra/3.png','img/empty orchestra/1.gif','img/empty orchestra/5.png','img/empty orchestra/6.png','img/empty orchestra/7.png','img/empty orchestra/8.png','img/empty orchestra/9.gif','img/empty orchestra/10.png','img/empty orchestra/11.png','img/empty orchestra/titles.png', ] } },
+
+    ];
+
+    //perminant dot stuff
+        dotsData.forEach(dotData => {
+          const dot = document.createElement('div');
+          dot.classList.add('dot');
+
+          dot.style.left = `${dotData.x}%`; // Use percentage for left position
+          dot.style.top = `${dotData.y}%`; // Use percentage for top position
+
+          const label = document.createElement('div');
+          label.classList.add('dot-label');
+          label.textContent = dotData.label;
+          dot.appendChild(label);
+
+          dot.addEventListener('click', () => {
+            activeDotData = dotData;
+            updateContent();
+          });
+
+          dot.addEventListener('mouseenter', () => {
+            contentContainer.innerHTML = dotData.template.content;
+            contentContainer.style.display = 'block';
+            label.style.display = 'block';
+            if (activeLabel && activeLabel !== label) {
+              activeLabel.style.display = 'none';
+            }
+            activeLabel = label;
+            activeDotData = dotData;
+        activeTemplate = dotData.template;
+        updateContent();
+          });
+
+          dot.addEventListener('mouseleave', () => {
+            if (!activeDotData) {
+              contentContainer.style.display = 'none';
+              label.style.display = 'none';
+            }
+          });
+
+          dotContainer.appendChild(dot);
+        });
+
+    function updateContent() {
+      const dotContents = document.querySelectorAll('.dot-content');
+      dotContents.forEach(dotContent => {
+        dotContent.style.display = 'none'; // Hide all dot contents
+      });
+
+      if (activeDotData) {
+        const activeDotContent = dotContentTemplate.content.cloneNode(true); // Clone the template
+        // Populate the cloned content with your data
+        activeDotContent.querySelector('h1').textContent = activeTemplate.title;
+        activeDotContent.querySelector('p').textContent = activeTemplate.description;
+
+        // Set the src attribute for the original image
+        activeDotContent.querySelector('.template-image').src = activeDotData.template.images[0];
+
+        // Dynamically create and append img elements for additional images
+        //perminant dot stuff
+const additionalImagesContainer = activeDotContent.getElementById('additionalImagesContainer');
+          for (let i = 1; i < activeDotData.template.images.length; i++) {
+          const imgElement = document.createElement('img');
+          imgElement.src = activeDotData.template.images[i];
+          imgElement.alt = `Image ${i + 1}`;
+          imgElement.classList.add('template-image');
+
+          // Append the img element to the additionalImagesContainer
+          additionalImagesContainer.appendChild(imgElement);
+        }
+
+        contentContainer.innerHTML = ''; // Clear the previous content
+        contentContainer.appendChild(activeDotContent); // Append the cloned content
+        contentContainer.style.display = 'block'; // Show the content container
+
+        // Mark the clicked dot so its content remains visible
+      dotContainer.querySelectorAll('.dot').forEach(dot => {
+        dot.classList.remove('clicked');
+      });
+
+      const clickedDot = dotContainer.querySelector(`[data-label="${activeDotData.label}"]`);
+
+      if (clickedDot) {
+        clickedDot.classList.add('clicked');
+      }
+    } else {
+      contentContainer.style.display = 'none';
+    }
+  }
+
+    contentContainer.addEventListener('mouseenter', () => {
+      if (activeDotData) {
+        contentContainer.style.display = 'block';
+      }
+    });
+
+    contentContainer.addEventListener('mouseleave', () => {
+      if (!activeDotData) {
+        contentContainer.style.display = 'none';
+      }
+    });
+
+
+
+  //COLOR BUTTONS
+  // Function to change specific dots to a specified color or reset to original color
+
+function changeDotsColor(dotsToChange, color, buttonState) {
+  dotsData.forEach((dotData, index) => {
+    const dot = dotContainer.children[index]; // Assuming dots are direct children of dotContainer
+
+    if (dot) {
+      if (buttonState.isActive) {
+        // Toggle the dot color based on whether it's in dotsToChange
+        dot.style.backgroundColor = dotsToChange.includes(index) ? color : 'black';
+      } else {
+        // Reset to original color (black)
+        dot.style.backgroundColor = 'black';
+      }
+    }
+  });
+
+  // Update the color of the button text
+  const changeColorButton = document.getElementById(buttonState.buttonId);
+  changeColorButton.style.color = buttonState.isActive ? color : 'black';
+}
+
+// Function to create a color-changing button
+function createColorChangingButton(buttonId, dotsToChange, color) {
+  let buttonState = { buttonId, isActive: false };
+
+  // Add click event listener to the button
+  const changeColorButton = document.getElementById(buttonId);
+  changeColorButton.addEventListener('click', () => {
+    // Toggle the button state
+    buttonState.isActive = !buttonState.isActive;
+
+    // Reset the previously active button, if any
+    buttonsState.forEach((btnState) => {
+      if (btnState.buttonId !== buttonId && btnState.isActive) {
+        btnState.isActive = false;
+        changeDotsColor(dotsToChange, color, btnState);
+      }
+    });
+
+    // Change the color for the current button
+    changeDotsColor(dotsToChange, color, buttonState);
+  });
+
+  // Store the button state
+  buttonsState.push(buttonState);
+}
+
+
+// Array to store button states
+const buttonsState = [];
+
+// books
+createColorChangingButton('changeColorButton', [0,1, 2, 3, 4, 5,6,7,8,9,10,11,], '#FF5215');
+
+// branding
+createColorChangingButton('changeColorButton2', [12,13,24,26], '#FF8FA5');
+
+// posters
+createColorChangingButton('changeColorButton3', [14,15,16,17,18,6,23], 'cornflowerblue');
+
+// illustration
+createColorChangingButton('changeColorButton4', [19,20,21,22,24,26,31,33,8,9], 'seagreen');
+
+// spatial
+createColorChangingButton('changeColorButton5', [23,24,25,26], '#BF6726');
+
+// objects
+createColorChangingButton('changeColorButton6', [12,27,28,29,30,31,32,33], '#0062FF');
+
+// typography
+createColorChangingButton('changeColorButton7', [34,35,36,6], '#FFE05C');
+
+// motion
+createColorChangingButton('changeColorButton8', [36], '#D6B4BD');
+//hide buttonS
+// Get the button container
+    const buttonsScrollContainer = document.querySelector('.buttons-scroll-container');
+
+    // Add a scroll event listener to the scrollable container (adjust 'scrollContainer' accordingly)
+    document.querySelector('.scroll-container').addEventListener('scroll', () => {
+      // Check the scroll position
+      const scrollPosition = document.querySelector('.scroll-container').scrollTop;
+
+      // Hide or show the button container based on the scroll position
+      if (scrollPosition > 0) {
+        buttonsScrollContainer.classList.add('hidden');
+      } else {
+        buttonsScrollContainer.classList.remove('hidden');
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const upButton = document.getElementById("up");
+      const scrollContainer = document.querySelector('.scroll-container');
+
+      // Function to toggle the visibility of the "up" button based on scroll position
+      function toggleUpButtonVisibility() {
+        if (scrollContainer.scrollTop > 0) {
+          upButton.style.display = 'block';
+        } else {
+          upButton.style.display = 'none';
+        }
+      }
+
+      // Initial visibility check
+      toggleUpButtonVisibility();
+
+      // Add scroll event listener to the scroll container
+      scrollContainer.addEventListener('scroll', toggleUpButtonVisibility);
+
+      // Add click event listener to the "up" button
+      upButton.addEventListener("click", function () {
+        scrollContainer.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    });
+
+    //logobutton
+//     document.addEventListener("DOMContentLoaded", function () {
+//   const logobutton = document.getElementById("logobutton");
+//
+//   logobutton.addEventListener("mouseenter", function () {
+//     document.body.style.backgroundColor = "orangered"; /* Change the background color on hover */
+//   });
+//
+//   logobutton.addEventListener("mouseleave", function () {
+//     document.body.style.backgroundColor = "white"; /* Restore the initial background color on mouse leave */
+//   });
+// });
+
+</script>
+</body>
+</html>

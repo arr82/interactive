@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Nimbus Sans L';
+    src: url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.eot');
+    src: url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.eot?#iefix') format('embedded-opentype'),
+        url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.woff2') format('woff2'),
+        url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.woff') format('woff'),
+        url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.ttf') format('truetype'),
+        url('iclouddrive/desktop/interactive/font/NimbusSanL-Reg.svg#NimbusSanL-Reg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ITC Century Std';
+    src: url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.eot');
+    src: url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.eot?#iefix') format('embedded-opentype'),
+        url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.woff2') format('woff2'),
+        url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.woff') format('woff'),
+        url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.ttf') format('truetype'),
+        url('iclouddrive/desktop/interactive/font/CenturyStd-BookCondensed.svg#CenturyStd-BookCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
