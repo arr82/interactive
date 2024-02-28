@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   @font-face {
     font-family: 'NimbusSanL-Reg';
@@ -16,7 +17,7 @@
   display: flex;
    font-family: 'NimbusSanL-Reg';
   flex-direction: column;
-    min-height: 100vh; /* Set minimum height of the viewport */
+  min-height: 100vh; /* Set minimum height of the viewport */
   }
 
     * {
@@ -115,12 +116,19 @@
     }
 
 h1{
-  font-size: 35px;
+  font-size: 25px;
 }
+
+@media (max-width: 768px) {
+      .h1{
+        font-size: 25px;
+      }
+    }
 
 p{
 top: 0px;
 }
+
 .toe{
   position: fixed;
   bottom: 0;
@@ -157,14 +165,13 @@ top: 0px;
       }
     }
 
-
-
     a{
       color: black;
     }
 
     img{
-      max-height: 300px;
+      max-height: 250px;
+      max-width: 70vw;
     }
 
     /* Style for the arrow when collapsed */
@@ -230,18 +237,18 @@ top: 0px;
     <h1>My name is Ainsley Romero.
       I am a designer who takes play very seriously and language very playfully. I'm currently located in Old Saybrook
       <span class="collapsible">
-        <span style="text-decoration: underline; outline-width: .2px;">CT</span>
+        <span style="text-decoration: underline; outline-width: .1px;">CT</span>
         <span></span>
         <span class="content expanded">
           <img src="olds.png" alt="Old Saybrook">
         </span>
       </span>
-      and I'm interested in making books, brands, functional objects, typography, illustrations, hand-coded sites
-      <span class="collapsible">
+      and I'm interested in making books, brands, functional objects, typography, illustrations, hand-coded sites.
+      <!-- <span class="collapsible">
     <span style="text-decoration: underline; outline-width: .2px;">etc.   </span>
         <span></span>
         <span class="content expanded">
-            and curriculums, exhibitions, toys, tools and more.
+            and curriculums, exhibitions, toys, tools and more. -->
         </span>
       </span>
     </h1>

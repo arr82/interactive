@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
 
@@ -52,6 +53,14 @@ body {
   transform: translate(-50%, -50%);
    z-index: 2;
 }
+
+
+@media (max-width: 768px) {
+  .dot{
+    width: 6px;
+    height: 6px;
+  }
+   }
 
 .dot-label {
   position:relative;
@@ -154,6 +163,14 @@ body {
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .about{
+    font-size: 12px;
+    top: 10px;
+    right: -5px;
+  }
+   }
+
 .scroll-container {
   position: relative;
   width: 100vw;
@@ -203,8 +220,6 @@ z-index: 0;
   box-sizing: border-box;
 }
 
-
-/* Media query for responsive layout */
 @media (max-width: 768px) {
   .left-column,
   .right-column {
@@ -219,6 +234,7 @@ z-index: 0;
 .left-column {
     order: 2;
    }
+
  }
 
 .template-image{
@@ -254,7 +270,8 @@ font-size: 20px;
 
 @media (max-width: 768px) {
   h1{
-  font-size: 20px;
+  font-size: 18px;
+    padding-right: 40px;
   }
    }
 
@@ -269,7 +286,8 @@ font-size: 20px;
 
 @media (max-width: 768px) {
   p{
-  font-size: 20px;
+  font-size: 18px;
+  padding-right: 40px;
   }
    }
 
@@ -309,7 +327,6 @@ display: block;
   color:black;
 text-decoration: none;
 display: block;
-
 }
 #changeColorButton5{
   color:black;
@@ -339,6 +356,14 @@ display: block;
   background-color: auto;
   z-index: 10;
 }
+
+@media (max-width: 768px) {
+  .buttons{
+    font-size: 12px;
+    left:16px;
+    top:16px;
+  }
+   }
 
 .button-scroll-container{
   position: fixed;
@@ -431,6 +456,7 @@ letter-spacing:-.5px;
           font-size: 25px;
           cursor: pointer;
           border: none;
+          color: black;
           background-color: transparent;
         }
 
@@ -454,6 +480,12 @@ letter-spacing:-.5px;
     height: auto;
     padding: 12px 0px;
   }
+
+  @media (max-width: 768px) {
+    .logo{
+  max-width: 50px;
+    }
+     }
 
   .hiddenText {
     opacity: 0;
@@ -565,7 +597,7 @@ letter-spacing:-.5px;
     images: ['img/anthology/1.png','img/anthology/2.gif','img/anthology/3.jpg','img/anthology/4.jpg','img/anthology/mu.jpg','img/anthology/5.jpg',  ] } },
 
 { x: 50, y: 50, label: 'To No Quantifiable End MFA Thesis',
-    template: { title: 'To No Quantifiable End, MFA Thesis Book 2023', description: 'This book is a perforated collection of the writing that surrounded all of my projects and research over the course of my MFA work and play. Writing the book consisted of cutting and rearranging separate pieces to uncover patterns in the subjects and methods of my work. I wanted the flexible structure of the book to be a continuation of the playful process of research that brought about the work. The book is meant to be torn apart into a paper toy for further rearranging, rewriting, and hopefully play. The book is laser cut, inkjet printed with hand sewn binding and a screen printed wooden box/cover. A copy is now housed in the Robert Haas Special Collections Library at Yale waiting to be interacted with. I hope for my work to be a record of that pleasurable impulse to grasp for what has no quantifiable end, no quantifiable value, no quantifiable use. My chosen method is through making objects that invite play because I believe Play to be a direct rebellion against a world (and a mind) that only values what it can see, hold and profit from. This is a short version of the thesis statement that came out of this work. ',
+    template: { title: 'To No Quantifiable End, MFA Thesis Book 2023', description: 'This book is a perforated collection of the writing that surrounded all of my projects and research over the course of my MFA work and play. Writing the book consisted of cutting and rearranging separate pieces to uncover patterns in the subjects and methods of my work. I wanted the flexible structure of the book to be a continuation of the playful process of research that brought about the work. The book is meant to be torn apart into a paper toy for further rearranging, rewriting, and hopefully play. The book is laser cut, inkjet printed with hand sewn binding and a screen printed wooden box/cover. A copy is now housed in the Robert Haas Special Collections Library at Yale waiting to be interacted with. ',
     content: 'Content for Dot 2',
     images: ['img/mfa/mfacoverfinal.png','img/mfa/2.gif','img/mfa/1 2.png','img/mfa/4.jpg','img/mfa/5.jpg','img/mfa/3.jpg','img/mfa/7.jpg','img/mfa/8.jpg','img/mfa/mfacover2 2.png', ] } },
 
