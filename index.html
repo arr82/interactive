@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <style>
 
 
@@ -495,7 +498,7 @@ letter-spacing:-.5px;
     }
      }
 
-  .hiddenText {
+  /* .hiddenText {
     opacity: 0;
     position: fixed;
   transform: rotate(-45deg);
@@ -504,7 +507,7 @@ letter-spacing:-.5px;
     line-height: -10px;
     white-space: nowrap;
     color: black;
-  }
+  } */
 
   #logobutton:hover .hiddenText {
     opacity: 1;
@@ -515,9 +518,32 @@ letter-spacing:-.5px;
 } */
 
 
+#pink-image {
+  position: fixed;
+  max-width: 60vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#hidden-text {
+  position: fixed;
+  max-width: 60vw;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  padding: 20px;
+  border: none;
+  font-size: 100px;
+}
+
+
+
+
 </style>
 </head>
-<title>chart</title>
+<title>Ainsley's Work</title>
 <body>
   <div class="buttons-scroll-container">
     <div class="buttons">
@@ -541,7 +567,12 @@ letter-spacing:-.5px;
 <div class="logocontainer">
     <button id="logobutton">
       <img class="logo" src="logo.png" alt="Logo">
-      <!-- <span class="hiddenText">welcome to my site! It was last updated on 02.27.2024 </span> -->
+  <img id="pink-image" src="a.gif" style="display: none;" alt="Pink Image">
+<div id="hidden-text" style="display: none;">
+  <p>This site was developed by Ainsley Romero and last updated on 2.29.24</p>
+</div>
+
+
     </button>
 
 
@@ -947,6 +978,32 @@ function createColorChangingButton(buttonId, dotsToChange, color) {
 // Array to store button states
 const buttonsState = [];
 
+// Function to create a color-changing button
+function createColorChangingButton(buttonId, dotsToChange, color) {
+  let buttonState = { buttonId, dotsToChange, color, isActive: false };
+
+  // Add click event listener to the button
+  const changeColorButton = document.getElementById(buttonId);
+  changeColorButton.addEventListener('click', () => {
+    // Toggle the button state
+    buttonState.isActive = !buttonState.isActive;
+
+    // Reset the previously active button, if any
+    buttonsState.forEach((btnState) => {
+      if (btnState.buttonId !== buttonId && btnState.isActive) {
+        btnState.isActive = false;
+        changeDotsColor(btnState.dotsToChange, btnState.color, btnState);
+      }
+    });
+
+    // Change the color for the current button
+    changeDotsColor(dotsToChange, color, buttonState);
+  });
+
+  // Store the button state
+  buttonsState.push(buttonState);
+}
+
 // books
 createColorChangingButton('changeColorButton', [0,1, 2, 3, 4, 5,6,7,8,9,10,11,], '#FF5215');
 
@@ -970,6 +1027,7 @@ createColorChangingButton('changeColorButton7', [34,35,36,6], '#FFE05C');
 
 // motion
 createColorChangingButton('changeColorButton8', [36], '#D6B4BD');
+
 //hide buttonS
 // Get the button container
     const buttonsScrollContainer = document.querySelector('.buttons-scroll-container');
@@ -1015,18 +1073,35 @@ createColorChangingButton('changeColorButton8', [36], '#D6B4BD');
       });
     });
 
-//     logobutton
-//     document.addEventListener("DOMContentLoaded", function () {
-//   const logobutton = document.getElementById("logobutton");
-//
-//   logobutton.addEventListener("mouseenter", function () {
-//     document.body.style.backgroundColor = "orangered"; /* Change the background color on hover */
-//   });
-//
-//   logobutton.addEventListener("mouseleave", function () {
-//     document.body.style.backgroundColor = "white"; /* Restore the initial background color on mouse leave */
-//   });
-// });
+    //logobutton
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   const logobutton = document.getElementById("logobutton");
+    //
+    //   logobutton.addEventListener("mouseenter", function () {
+    //     document.body.style.backgroundColor = "orangered"; /* Change the background color on hover */
+    //
+    //     // Show the pink image
+    //     const pinkImage = document.getElementById("pink-image");
+    //     pinkImage.style.display = "block";
+    //
+    //     // Show the hidden text block
+    //     const hiddenText = document.getElementById("hidden-text");
+    //     hiddenText.style.display = "block";
+    //   });
+    //
+    //   logobutton.addEventListener("mouseleave", function () {
+    //     document.body.style.backgroundColor = "white"; /* Restore the initial background color on mouse leave */
+    //
+    //     // Hide the pink image
+    //     const pinkImage = document.getElementById("pink-image");
+    //     pinkImage.style.display = "none";
+    //
+    //     // Hide the hidden text block
+    //     const hiddenText = document.getElementById("hidden-text");
+    //     hiddenText.style.display = "none";
+    //   });
+    // });
+
 
 </script>
 </body>
