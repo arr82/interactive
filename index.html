@@ -485,11 +485,6 @@ letter-spacing:-.5px;
     align-items: center;
   }
 
-  .logo {
-    max-width: 70px;
-    height: auto;
-    padding: 12px 0px;
-  }
 
   @media (max-width: 768px) {
     .logo{
@@ -517,28 +512,41 @@ letter-spacing:-.5px;
   transform: scale(3);
 } */
 
-
 #pink-image {
+  padding: 12px 0px;
   position: fixed;
-  max-width: 60vh;
+  bottom: 0px;
+  left: 10px;
+  max-width: 70px;
+  z-index: 2;
+  /* max-width: 60vh;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 #hidden-text {
   position: fixed;
-  max-width: 60vw;
-  top: 80%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: transparent;
-  padding: 20px;
-  border: none;
-  font-size: 100px;
+  bottom: 50%;
+  transform: translate(-50%, 50%) rotate(-45deg);
+  font-size: 8vw;
+  color: black;
+  display: none;
+  white-space: wrap;
+  z-index: 1;
+  line-height: 8vw;
 }
 
 
+  .logo{
+padding: 12px 0px;
+position: fixed;
+bottom: 0px;
+left: 10px;
+max-width: 70px;
+z-index: 2;
+        }
 
 
 </style>
@@ -566,11 +574,12 @@ letter-spacing:-.5px;
 
 <div class="logocontainer">
     <button id="logobutton">
-      <img class="logo" src="logo.png" alt="Logo">
-  <img id="pink-image" src="a.gif" style="display: none;" alt="Pink Image">
-<div id="hidden-text" style="display: none;">
-  <p>This site was developed by Ainsley Romero and last updated on 2.29.24</p>
-</div>
+    <img class="logo" src="logo.png" alt="Logo">
+<!-- <div id="hidden-text" style="display: none;">
+  This site was developed by Ainsley Romero and last updated on 2.29.24
+</div> -->
+
+<img id="pink-image" src="a.gif" style="display: none;" alt="Pink Image">
 
 
     </button>
@@ -1074,33 +1083,42 @@ createColorChangingButton('changeColorButton8', [36], '#D6B4BD');
     });
 
     //logobutton
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   const logobutton = document.getElementById("logobutton");
-    //
-    //   logobutton.addEventListener("mouseenter", function () {
-    //     document.body.style.backgroundColor = "orangered"; /* Change the background color on hover */
-    //
-    //     // Show the pink image
-    //     const pinkImage = document.getElementById("pink-image");
-    //     pinkImage.style.display = "block";
-    //
-    //     // Show the hidden text block
-    //     const hiddenText = document.getElementById("hidden-text");
-    //     hiddenText.style.display = "block";
-    //   });
-    //
-    //   logobutton.addEventListener("mouseleave", function () {
-    //     document.body.style.backgroundColor = "white"; /* Restore the initial background color on mouse leave */
-    //
-    //     // Hide the pink image
-    //     const pinkImage = document.getElementById("pink-image");
-    //     pinkImage.style.display = "none";
-    //
-    //     // Hide the hidden text block
-    //     const hiddenText = document.getElementById("hidden-text");
-    //     hiddenText.style.display = "none";
-    //   });
-    // });
+    document.addEventListener("DOMContentLoaded", function () {
+  const logobutton = document.getElementById("logobutton");
+  const pinkImage = document.getElementById("pink-image");
+  const hiddenText = document.getElementById("hidden-text");
+  const logoImage = document.querySelector(".logo"); // Assuming your logo has the class "logo"
+
+  logobutton.addEventListener("mouseenter", function () {
+    document.body.style.backgroundColor = "white"; /* Change the background color on hover */
+
+    // Hide the logo image
+    if (logoImage) {
+      logoImage.style.display = "none";
+    }
+
+    // Show the pink image
+    pinkImage.style.display = "block";
+
+    // Show the hidden text block
+    hiddenText.style.display = "block";
+  });
+
+  logobutton.addEventListener("mouseleave", function () {
+    document.body.style.backgroundColor = "white"; /* Restore the initial background color on mouse leave */
+
+    // Show the logo image
+    if (logoImage) {
+      logoImage.style.display = "block";
+    }
+
+    // Hide the pink image
+    pinkImage.style.display = "none";
+
+    // Hide the hidden text block
+    hiddenText.style.display = "none";
+  });
+});
 
 
 </script>
